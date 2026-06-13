@@ -88,14 +88,37 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
 
   return (
     <div>
-      {/* Tier legend */}
-      <div className="mb-5 flex flex-wrap gap-3">
-        {TIER_KEY.map(({ tier, label, description }) => (
-          <div key={tier} className="flex items-center gap-1.5 text-xs text-gray-600">
-            <span className={`px-2 py-0.5 rounded border font-medium ${tierColors[tier]}`}>{label}</span>
-            <span className="text-gray-400">{description}</span>
-          </div>
-        ))}
+      {/* Tier legend table */}
+      <div className="mb-6 border border-gray-200 rounded-lg overflow-hidden">
+        <table className="w-full text-xs">
+          <thead>
+            <tr className="bg-gray-50 border-b border-gray-200">
+              <th className="text-left px-4 py-2 font-medium text-gray-500 uppercase tracking-wide w-28">Tier</th>
+              <th className="text-left px-4 py-2 font-medium text-gray-500 uppercase tracking-wide">Meaning</th>
+              <th className="text-left px-4 py-2 font-medium text-gray-500 uppercase tracking-wide">Allocation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {TIER_KEY.map(({ tier, label, description }, i) => {
+              const allocation: Record<string, string> = {
+                Top: "Priority — first offer on all loads",
+                Mid: "Steady — regular volume, monitored",
+                Improvement: "Restricted — action plan required before scale-up",
+                Provisional: "Limited — monitored for 90 days post-first-load",
+                Rejected: "None — cannot be onboarded until compliance is resolved",
+              };
+              return (
+                <tr key={tier} className={i < TIER_KEY.length - 1 ? "border-b border-gray-100" : ""}>
+                  <td className="px-4 py-2.5">
+                    <span className={`px-2 py-0.5 rounded border font-medium ${tierColors[tier]}`}>{label}</span>
+                  </td>
+                  <td className="px-4 py-2.5 text-gray-600">{description}</td>
+                  <td className="px-4 py-2.5 text-gray-500">{allocation[tier]}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
 
       <div className="overflow-x-auto">
@@ -121,12 +144,16 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
 
               return (
                 <Fragment key={c.id}>
-                  <tr
-                    className={`border-b border-gray-50 hover:bg-gray-50 transition-colors ${hasMetrics ? "cursor-pointer" : ""}`}
-                    onClick={() => hasMetrics && setExpandedId(isExpanded ? null : c.id)}
-                  >
-                    <td className="py-2.5 pr-3 text-gray-300 text-xs">
-                      {hasMetrics ? (isExpanded ? "▾" : "▸") : ""}
+                  <tr className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                    <td className="py-2.5 pr-3 text-center">
+                      {hasMetrics && (
+                        <button
+                          onClick={() => setExpandedId(isExpanded ? null : c.id)}
+                          className="text-gray-500 hover:text-gray-800 transition-colors text-sm"
+                        >
+                          {isExpanded ? "▾" : "▸"}
+                        </button>
+                      )}
                     </td>
                     <td className="py-2.5 pr-4 text-gray-400 font-mono text-xs">{c.id}</td>
                     <td className="py-2.5 pr-4 font-medium text-gray-800">{c.name}</td>
@@ -147,7 +174,7 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
                     <td className="py-2.5">
                       {c.isLabelled && c.submission ? (
                         <button
-                          onClick={(e) => { e.stopPropagation(); onSelectCarrier?.(c.id); }}
+                          onClick={() => onSelectCarrier?.(c.id)}
                           className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
                         >
                           Run pipeline →

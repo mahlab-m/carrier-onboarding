@@ -98,8 +98,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-lg font-bold text-gray-900">Carrier Onboarding AI</h1>
-            <p className="text-xs text-gray-500 mt-0.5">
-              Deterministic workflow + agent qualification pipeline
+            <p className="text-sm text-gray-600 mt-0.5">
+              An AI pipeline that qualifies and tiers logistics carriers from raw WhatsApp submissions.
+            </p>
+            <p className="text-xs text-gray-400 mt-0.5">
+              Built from the manual onboarding framework I designed at Trella, deployed here as a working system.
             </p>
           </div>
           <div className="text-xs text-gray-400 text-right">
