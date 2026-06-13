@@ -1,0 +1,73 @@
+{
+  "lanes": [
+    {
+      "id": "A-B",
+      "name": "City A to City B",
+      "description": "High-volume corridor, strong demand",
+      "capacityGap": true,
+      "capacityGapSeverity": "high",
+      "benchmarkRates": {
+        "20ft": 45000,
+        "40ft": 85000,
+        "flatbed": 72000,
+        "mazda": 18000,
+        "small_van": 12000
+      }
+    },
+    {
+      "id": "B-C",
+      "name": "City B to City C",
+      "description": "Mid-volume corridor, moderate demand",
+      "capacityGap": true,
+      "capacityGapSeverity": "low",
+      "benchmarkRates": {
+        "20ft": 38000,
+        "40ft": 72000,
+        "flatbed": 60000,
+        "mazda": 15000,
+        "small_van": 10000
+      }
+    },
+    {
+      "id": "C-D",
+      "name": "City C to City D",
+      "description": "Lower-volume corridor, emerging market",
+      "capacityGap": false,
+      "capacityGapSeverity": null,
+      "benchmarkRates": {
+        "20ft": 30000,
+        "40ft": 58000,
+        "flatbed": 48000,
+        "mazda": 12000,
+        "small_van": 8000
+      }
+    },
+    {
+      "id": "A-D",
+      "name": "City A to City D",
+      "description": "Long-haul corridor, high value loads",
+      "capacityGap": false,
+      "capacityGapSeverity": null,
+      "benchmarkRates": {
+        "20ft": 65000,
+        "40ft": 120000,
+        "flatbed": 100000,
+        "mazda": 28000,
+        "small_van": 18000
+      }
+    }
+  ],
+  "truckTypes": ["20ft", "40ft", "flatbed", "mazda", "small_van"],
+  "tierThresholds": {
+    "top": 75,
+    "mid": 50,
+    "improvement": 0
+  },
+  "scorecardWeights": {
+    "appAdoption": 0.2,
+    "onTimePickup": 0.2,
+    "pricingCompetitiveness": 0.2,
+    "fulfilmentRate": 0.2,
+    "supplyBreadth": 0.2
+  }
+}

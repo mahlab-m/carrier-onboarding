@@ -1,0 +1,982 @@
+[
+  {
+    "id": "C001",
+    "name": "Al-Amin Transport",
+    "evalLabel": "Top",
+    "isLabelled": true,
+    "knownIssues": [],
+    "submission": {
+      "carrierName": "Al-Amin Transport",
+      "submittedBy": "Muhammad Amin",
+      "contactNumber": "0300-1234567",
+      "documentBlob": "Hi, registering Al-Amin Transport for onboarding. Tax ID is 1234567, bank account MCB 0012345678, account title Al-Amin Transport. We cover City A to B and City B to C. Fleet: 3x 40ft containers and 2x flatbed. App signup done, first load completed last week. On time 92% last quarter, fulfillment 95%."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 90,
+      "onTimePickupRate": 92,
+      "averageRatePKR": { "40ft": 84000, "flatbed": 71000 },
+      "fulfilmentRate": 95,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["40ft", "flatbed"],
+      "totalTrucks": 5,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "1234567",
+      "bankName": "MCB",
+      "bankAccount": "0012345678"
+    }
+  },
+  {
+    "id": "C002",
+    "name": "Pak Swift Logistics",
+    "evalLabel": "Top",
+    "isLabelled": true,
+    "knownIssues": [],
+    "submission": {
+      "carrierName": "Pak Swift Logistics",
+      "submittedBy": "Zubair Khan",
+      "contactNumber": "0321-9876543",
+      "documentBlob": "Salam, this is Pak Swift Logistics. Registration details: NTN/Tax 9876543, HBL account 0098765432 title Pak Swift Logistics. We have 4 trucks: 2x 40ft and 2x 20ft. Operating on A-B, B-C and A-D lanes. App registered and active daily. First load done 2 months ago. Pickup on time 89%, fulfillment 91%, rates competitive per market."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 88,
+      "onTimePickupRate": 89,
+      "averageRatePKR": { "40ft": 83000, "20ft": 44000 },
+      "fulfilmentRate": 91,
+      "lanesServed": ["A-B", "B-C", "A-D"],
+      "truckTypes": ["40ft", "20ft"],
+      "totalTrucks": 4,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "9876543",
+      "bankName": "HBL",
+      "bankAccount": "0098765432"
+    }
+  },
+  {
+    "id": "C003",
+    "name": "Hamza Freight Co",
+    "evalLabel": "Provisional",
+    "isLabelled": true,
+    "knownIssues": ["No performance history — first load just completed"],
+    "submission": {
+      "carrierName": "Hamza Freight Co",
+      "submittedBy": "Hamza Malik",
+      "contactNumber": "0333-5556789",
+      "documentBlob": "Good morning. Hamza Freight Co applying for carrier registration. Tax number 3456789, bank Meezan Bank account 0033445566. We operate City A to B lane with 2x 40ft trucks. Just completed first load this week. App downloaded and active. Ready to take more loads."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": null,
+      "onTimePickupRate": null,
+      "averageRatePKR": { "40ft": 85000 },
+      "fulfilmentRate": null,
+      "lanesServed": ["A-B"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "3456789",
+      "bankName": "Meezan Bank",
+      "bankAccount": "0033445566"
+    }
+  },
+  {
+    "id": "C004",
+    "name": "City Movers Ltd",
+    "evalLabel": "Provisional",
+    "isLabelled": true,
+    "knownIssues": ["First load not yet completed"],
+    "submission": {
+      "carrierName": "City Movers Ltd",
+      "submittedBy": "Salman Raza",
+      "contactNumber": "0311-2223344",
+      "documentBlob": "Assalamualaikum. City Movers Ltd wants to register. Tax ID 5678901, bank Allied Bank 0055667788 account title City Movers Ltd. We have 1x 40ft and 1x Mazda. Can do City A to B and City C to D. App signup complete. No loads done yet but ready to start immediately."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": null,
+      "onTimePickupRate": null,
+      "averageRatePKR": { "40ft": 86000, "mazda": 18000 },
+      "fulfilmentRate": null,
+      "lanesServed": ["A-B", "C-D"],
+      "truckTypes": ["40ft", "mazda"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": false,
+      "appSignup": true,
+      "taxId": "5678901",
+      "bankName": "Allied Bank",
+      "bankAccount": "0055667788"
+    }
+  },
+  {
+    "id": "C005",
+    "name": "Rehman Cargo Services",
+    "evalLabel": "Rejected",
+    "isLabelled": true,
+    "knownIssues": ["Missing tax ID"],
+    "submission": {
+      "carrierName": "Rehman Cargo Services",
+      "submittedBy": "Abdul Rehman",
+      "contactNumber": "0345-7778899",
+      "documentBlob": "Hi team. Rehman Cargo Services here. Bank account UBL 0077889900, account in name of Rehman Cargo. We have 3 Mazda trucks doing City A to B and B to C. App is registered. Tax documents we will send separately bhai, NTN pending renewal. First load done 1 month back."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 65,
+      "onTimePickupRate": 78,
+      "averageRatePKR": { "mazda": 17500 },
+      "fulfilmentRate": 80,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["mazda"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": null,
+      "bankName": "UBL",
+      "bankAccount": "0077889900"
+    }
+  },
+  {
+    "id": "C006",
+    "name": "Northern Express Transport",
+    "evalLabel": "Rejected",
+    "isLabelled": true,
+    "knownIssues": ["Missing bank details"],
+    "submission": {
+      "carrierName": "Northern Express Transport",
+      "submittedBy": "Tariq Mahmood",
+      "contactNumber": "0322-4445566",
+      "documentBlob": "Northern Express Transport registration. Tax ID 6789012. We cover A-B, B-C, C-D lanes. Fleet: 2x 40ft, 1x 20ft. App active. First load completed. Bank details we forgot to include, will send separately on WhatsApp. On time delivery 85%, fulfillment 88%."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 72,
+      "onTimePickupRate": 85,
+      "averageRatePKR": { "40ft": 84500, "20ft": 44500 },
+      "fulfilmentRate": 88,
+      "lanesServed": ["A-B", "B-C", "C-D"],
+      "truckTypes": ["40ft", "20ft"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "6789012",
+      "bankName": null,
+      "bankAccount": null
+    }
+  },
+  {
+    "id": "C007",
+    "name": "Faisal Brothers Trucking",
+    "evalLabel": "Rejected",
+    "isLabelled": true,
+    "knownIssues": ["Missing tax ID and bank details"],
+    "submission": {
+      "carrierName": "Faisal Brothers Trucking",
+      "submittedBy": "Faisal Iqbal",
+      "contactNumber": "0301-9990001",
+      "documentBlob": "Bhai registering Faisal Brothers Trucking. We have 5 trucks: 3x flatbed 2x 40ft. All lanes A B C D. App downloaded. First load done. Tax and bank docs are at office will bring tomorrow. Please register us."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 55,
+      "onTimePickupRate": 80,
+      "averageRatePKR": { "flatbed": 71000, "40ft": 84000 },
+      "fulfilmentRate": 82,
+      "lanesServed": ["A-B", "B-C", "C-D", "A-D"],
+      "truckTypes": ["flatbed", "40ft"],
+      "totalTrucks": 5,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": null,
+      "bankName": null,
+      "bankAccount": null
+    }
+  },
+  {
+    "id": "C008",
+    "name": "Speedway Logistics",
+    "evalLabel": "Rejected",
+    "isLabelled": true,
+    "knownIssues": ["Tax ID wrong format — not 7 digits"],
+    "submission": {
+      "carrierName": "Speedway Logistics",
+      "submittedBy": "Imran Siddiqui",
+      "contactNumber": "0335-1112233",
+      "documentBlob": "Speedway Logistics registration. NTN: PK-12345-ABC, bank Habib Metro 0011223344 account Speedway Logistics. Fleet 2x 40ft on A-B lane. App registered. First load 2 weeks ago. Good track record."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 70,
+      "onTimePickupRate": 83,
+      "averageRatePKR": { "40ft": 83000 },
+      "fulfilmentRate": 86,
+      "lanesServed": ["A-B"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "PK-12345-ABC",
+      "bankName": "Habib Metro",
+      "bankAccount": "0011223344"
+    }
+  },
+  {
+    "id": "C009",
+    "name": "Premium Haulage Co",
+    "evalLabel": "Improvement",
+    "isLabelled": true,
+    "knownIssues": ["Pricing well above lane benchmark on A-B"],
+    "submission": {
+      "carrierName": "Premium Haulage Co",
+      "submittedBy": "Kashif Ali",
+      "contactNumber": "0312-6667788",
+      "documentBlob": "Premium Haulage Co. Tax 2345678, bank Askari Bank 0022334455. We operate A-B with 2x 40ft. App active, first load done 3 months ago. Our rates are premium quality service."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 68,
+      "onTimePickupRate": 80,
+      "averageRatePKR": { "40ft": 112000 },
+      "fulfilmentRate": 78,
+      "lanesServed": ["A-B"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "2345678",
+      "bankName": "Askari Bank",
+      "bankAccount": "0022334455"
+    }
+  },
+  {
+    "id": "C010",
+    "name": "Single Lane Movers",
+    "evalLabel": "Mid",
+    "isLabelled": true,
+    "knownIssues": ["Single-lane concentration — only covers A-B, low supply breadth (HIGH risk flag, Mid tier)"],
+    "submission": {
+      "carrierName": "Single Lane Movers",
+      "submittedBy": "Bilal Ahmed",
+      "contactNumber": "0344-3334455",
+      "documentBlob": "Single Lane Movers. NTN 3456780, Faysal Bank 0033445577 account Single Lane Movers. We specialise in City A to B only, have 2x 40ft trucks, this is our main route. App active, first load done. Good on-time rate."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 72,
+      "onTimePickupRate": 84,
+      "averageRatePKR": { "40ft": 84500 },
+      "fulfilmentRate": 83,
+      "lanesServed": ["A-B"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "3456780",
+      "bankName": "Faysal Bank",
+      "bankAccount": "0033445577"
+    }
+  },
+  {
+    "id": "C011",
+    "name": "Risky Freight Solutions",
+    "evalLabel": "Mid",
+    "isLabelled": true,
+    "knownIssues": ["Low fulfilment rate — 58% (HIGH risk flag, Mid tier)"],
+    "submission": {
+      "carrierName": "Risky Freight Solutions",
+      "submittedBy": "Usman Tariq",
+      "contactNumber": "0323-8889900",
+      "documentBlob": "Risky Freight Solutions. Tax ID 4567890, bank Silkbank 0044556677. Have 3x 40ft on A-B and B-C. App used. First load done 4 months ago. Some loads we couldn't take due to truck issues, working on fleet maintenance."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 60,
+      "onTimePickupRate": 75,
+      "averageRatePKR": { "40ft": 84000 },
+      "fulfilmentRate": 58,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "4567890",
+      "bankName": "Silkbank",
+      "bankAccount": "0044556677"
+    }
+  },
+  {
+    "id": "C012",
+    "name": "Offline Transport Co",
+    "evalLabel": "Mid",
+    "isLabelled": true,
+    "knownIssues": ["App not adopted — very low usage despite being onboarded (HIGH risk flag, Mid tier)"],
+    "submission": {
+      "carrierName": "Offline Transport Co",
+      "submittedBy": "Naveed Shah",
+      "contactNumber": "0300-2223344",
+      "documentBlob": "Offline Transport Co registration. NTN 5678902, UBL 0055667799 account name Offline Transport. 3x 40ft on A-B and A-D. First load completed. App downloaded but we mostly work through phone calls and WhatsApp, not used to the app yet. Good fulfillment otherwise."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 18,
+      "onTimePickupRate": 82,
+      "averageRatePKR": { "40ft": 85000 },
+      "fulfilmentRate": 84,
+      "lanesServed": ["A-B", "A-D"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "5678902",
+      "bankName": "UBL",
+      "bankAccount": "0055667799"
+    }
+  },
+  {
+    "id": "C013",
+    "name": "Borderline Mid Transport",
+    "evalLabel": "Mid",
+    "isLabelled": true,
+    "knownIssues": ["Borderline Mid/Improvement — score around 52"],
+    "submission": {
+      "carrierName": "Borderline Mid Transport",
+      "submittedBy": "Arslan Cheema",
+      "contactNumber": "0315-4445566",
+      "documentBlob": "Borderline Mid Transport here. Tax 6789013, Standard Chartered 0066778899. We do A-B with 1x 40ft. App used occasionally. First load done. Fulfillment ok, rates near market."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 45,
+      "onTimePickupRate": 72,
+      "averageRatePKR": { "40ft": 87000 },
+      "fulfilmentRate": 68,
+      "lanesServed": ["A-B"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 1,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "6789013",
+      "bankName": "Standard Chartered",
+      "bankAccount": "0066778899"
+    }
+  },
+  {
+    "id": "C014",
+    "name": "Top Edge Carriers",
+    "evalLabel": "Top",
+    "isLabelled": true,
+    "knownIssues": ["Borderline Top/Mid — score around 76"],
+    "submission": {
+      "carrierName": "Top Edge Carriers",
+      "submittedBy": "Farhan Butt",
+      "contactNumber": "0321-5556677",
+      "documentBlob": "Top Edge Carriers. NTN 7890134, MCB 0077889911 account Top Edge Carriers. Fleet: 2x 40ft and 1x 20ft. Lanes A-B and B-C. App active daily. First load done. On time 80%, fulfillment 83%, rates just under benchmark."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 80,
+      "onTimePickupRate": 80,
+      "averageRatePKR": { "40ft": 82000, "20ft": 43000 },
+      "fulfilmentRate": 83,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["40ft", "20ft"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "7890134",
+      "bankName": "MCB",
+      "bankAccount": "0077889911"
+    }
+  },
+  {
+    "id": "C015",
+    "name": "Rock Bottom Logistics",
+    "evalLabel": "Improvement",
+    "isLabelled": true,
+    "knownIssues": ["All metrics poor — multiple flags, needs full 30-day plan"],
+    "submission": {
+      "carrierName": "Rock Bottom Logistics",
+      "submittedBy": "Waqas Noor",
+      "contactNumber": "0303-6667788",
+      "documentBlob": "Rock Bottom Logistics. Tax 8901234, HBL 0088990022. We have 2 40ft on A-B only. App sometimes use it. First load done 6 months ago. Not many loads completed, some issues with truck availability and driver. Rates fixed at 95000."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 22,
+      "onTimePickupRate": 55,
+      "averageRatePKR": { "40ft": 95000 },
+      "fulfilmentRate": 45,
+      "lanesServed": ["A-B"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "8901234",
+      "bankName": "HBL",
+      "bankAccount": "0088990022"
+    }
+  },
+  {
+    "id": "C016",
+    "name": "Jannat Freight",
+    "evalLabel": "Top",
+    "isLabelled": true,
+    "knownIssues": ["Test: messy blob — all info buried in free text"],
+    "submission": {
+      "carrierName": "Jannat Freight",
+      "submittedBy": "Junaid Qureshi",
+      "contactNumber": "0312-0001122",
+      "documentBlob": "bhai ye jannat freight ki taraf se msg hai, hamara NTN number saat anka ka hai 9012345, hum A-B aur B-C pe chalte hain, hamare paas 40ft ke teen truck hain aur ek flatbed bhi, bank wala Meezan mein hai account zero zero nine nine zero zero one one two two hai, pehla load done hogaya hai, app pe registered hain, on time delivery 88 percent aur fulfillment bhi acha hai 90 percent se upar"
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 82,
+      "onTimePickupRate": 88,
+      "averageRatePKR": { "40ft": 83000, "flatbed": 70000 },
+      "fulfilmentRate": 91,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["40ft", "flatbed"],
+      "totalTrucks": 4,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "9012345",
+      "bankName": "Meezan",
+      "bankAccount": "0099001122"
+    }
+  },
+  {
+    "id": "C017",
+    "name": "Sardar Transport",
+    "evalLabel": "Mid",
+    "isLabelled": true,
+    "knownIssues": ["Test: Urdu transliteration mix in document blob"],
+    "submission": {
+      "carrierName": "Sardar Transport",
+      "submittedBy": "Sardar Hussain",
+      "contactNumber": "0333-1110099",
+      "documentBlob": "Assalam o alaikum. Sardar Transport ka registration. Tax number: 0123456. Bank: Bank Al-Habib, account number 0100112233. Gaariyan: 2 cha-kis aur 1 chota Mazda. Lanes: A se B aur B se C. App pe hain, pehla load karwa chuke hain. Timing theek hai, 78 percent on time, fulfillment 75 percent."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 65,
+      "onTimePickupRate": 78,
+      "averageRatePKR": { "40ft": 86000, "mazda": 17000 },
+      "fulfilmentRate": 75,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["40ft", "mazda"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "0123456",
+      "bankName": "Bank Al-Habib",
+      "bankAccount": "0100112233"
+    }
+  },
+  {
+    "id": "C018",
+    "name": "TK Logistics",
+    "evalLabel": "Mid",
+    "isLabelled": true,
+    "knownIssues": ["Test: heavy abbreviations throughout"],
+    "submission": {
+      "carrierName": "TK Logistics",
+      "submittedBy": "T. Khan",
+      "contactNumber": "0344-9998877",
+      "documentBlob": "TK Log. reg. NTN 1234560, BAF 0110223344 a/c TK Log. Flt: 2x40 1xfb. Rts: AB BC. App reg, FL done. OT 81%, ful 79%, rts mkt aligned."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 70,
+      "onTimePickupRate": 81,
+      "averageRatePKR": { "40ft": 85000, "flatbed": 72000 },
+      "fulfilmentRate": 79,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["40ft", "flatbed"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "1234560",
+      "bankName": "BAF",
+      "bankAccount": "0110223344"
+    }
+  },
+  {
+    "id": "C019",
+    "name": "Multi-Lane Masters",
+    "evalLabel": "Provisional",
+    "isLabelled": true,
+    "knownIssues": ["Strong supply breadth, but brand new — no performance history"],
+    "submission": {
+      "carrierName": "Multi-Lane Masters",
+      "submittedBy": "Adnan Mirza",
+      "contactNumber": "0321-3332211",
+      "documentBlob": "Multi-Lane Masters. Tax 2345670, Meezan 0022334466 account Multi-Lane Masters. We have a large fleet: 3x 40ft, 2x 20ft, 1x flatbed, 2x Mazda. Cover all four lanes A-B, B-C, C-D and A-D. App signup done. No loads yet but ready to start this week."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": null,
+      "onTimePickupRate": null,
+      "averageRatePKR": { "40ft": 85000, "20ft": 45000, "flatbed": 72000, "mazda": 18000 },
+      "fulfilmentRate": null,
+      "lanesServed": ["A-B", "B-C", "C-D", "A-D"],
+      "truckTypes": ["40ft", "20ft", "flatbed", "mazda"],
+      "totalTrucks": 8,
+      "firstLoadCompleted": false,
+      "appSignup": true,
+      "taxId": "2345670",
+      "bankName": "Meezan",
+      "bankAccount": "0022334466"
+    }
+  },
+  {
+    "id": "C020",
+    "name": "Almost There Transport",
+    "evalLabel": "Rejected",
+    "isLabelled": true,
+    "knownIssues": ["Tax ID is 8 digits — fails 7-digit format check despite strong performance metrics"],
+    "submission": {
+      "carrierName": "Almost There Transport",
+      "submittedBy": "Shahid Nawaz",
+      "contactNumber": "0300-5554433",
+      "documentBlob": "Almost There Transport registration. Tax number 12345678 (8 digits, renewal certificate attached). Bank BankIslami 0033445588 account Almost There Transport. Fleet 2x 40ft and 1x small van. A-B and C-D lanes. App active, first load done. On time 87%, fulfillment 89%."
+    },
+    "performanceMetrics": {
+      "appAdoptionScore": 78,
+      "onTimePickupRate": 87,
+      "averageRatePKR": { "40ft": 84000, "small_van": 11500 },
+      "fulfilmentRate": 89,
+      "lanesServed": ["A-B", "C-D"],
+      "truckTypes": ["40ft", "small_van"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "12345678",
+      "bankName": "BankIslami",
+      "bankAccount": "0033445588"
+    }
+  },
+  {
+    "id": "C021",
+    "name": "Atlas Road Carriers",
+    "evalLabel": "Top",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 91,
+      "onTimePickupRate": 93,
+      "averageRatePKR": { "40ft": 82000 },
+      "fulfilmentRate": 96,
+      "lanesServed": ["A-B", "B-C", "A-D"],
+      "truckTypes": ["40ft", "flatbed"],
+      "totalTrucks": 6,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "3456791",
+      "bankName": "HBL",
+      "bankAccount": "0091234567"
+    }
+  },
+  {
+    "id": "C022",
+    "name": "Crescent Freight",
+    "evalLabel": "Mid",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 74,
+      "onTimePickupRate": 76,
+      "averageRatePKR": { "40ft": 84000, "20ft": 44000 },
+      "fulfilmentRate": 78,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["40ft", "20ft"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "4567802",
+      "bankName": "MCB",
+      "bankAccount": "0082345678"
+    }
+  },
+  {
+    "id": "C023",
+    "name": "Sunrise Transport",
+    "evalLabel": "Top",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 87,
+      "onTimePickupRate": 90,
+      "averageRatePKR": { "flatbed": 70000 },
+      "fulfilmentRate": 92,
+      "lanesServed": ["A-B", "B-C", "C-D"],
+      "truckTypes": ["flatbed", "20ft"],
+      "totalTrucks": 4,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "5678913",
+      "bankName": "Meezan",
+      "bankAccount": "0073456789"
+    }
+  },
+  {
+    "id": "C024",
+    "name": "Delta Movers",
+    "evalLabel": "Improvement",
+    "isLabelled": false,
+    "knownIssues": ["Low app adoption"],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 20,
+      "onTimePickupRate": 79,
+      "averageRatePKR": { "40ft": 85000 },
+      "fulfilmentRate": 80,
+      "lanesServed": ["A-B"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "6789024",
+      "bankName": "UBL",
+      "bankAccount": "0064567890"
+    }
+  },
+  {
+    "id": "C025",
+    "name": "Eagle Wings Logistics",
+    "evalLabel": "Mid",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 68,
+      "onTimePickupRate": 73,
+      "averageRatePKR": { "40ft": 84000, "mazda": 17500 },
+      "fulfilmentRate": 72,
+      "lanesServed": ["A-B", "C-D"],
+      "truckTypes": ["40ft", "mazda"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "7890135",
+      "bankName": "Allied Bank",
+      "bankAccount": "0055678901"
+    }
+  },
+  {
+    "id": "C026",
+    "name": "Green Valley Freight",
+    "evalLabel": "Top",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 85,
+      "onTimePickupRate": 88,
+      "averageRatePKR": { "40ft": 83000 },
+      "fulfilmentRate": 90,
+      "lanesServed": ["A-B", "B-C", "A-D"],
+      "truckTypes": ["40ft", "20ft", "mazda"],
+      "totalTrucks": 5,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "8901246",
+      "bankName": "Askari Bank",
+      "bankAccount": "0046789012"
+    }
+  },
+  {
+    "id": "C027",
+    "name": "Horizon Carriers",
+    "evalLabel": "Improvement",
+    "isLabelled": false,
+    "knownIssues": ["Pricing above benchmark"],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 55,
+      "onTimePickupRate": 70,
+      "averageRatePKR": { "40ft": 98000 },
+      "fulfilmentRate": 65,
+      "lanesServed": ["A-B"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "9012357",
+      "bankName": "Faysal Bank",
+      "bankAccount": "0037890123"
+    }
+  },
+  {
+    "id": "C028",
+    "name": "Swift Star Transport",
+    "evalLabel": "Mid",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 72,
+      "onTimePickupRate": 77,
+      "averageRatePKR": { "40ft": 85000, "flatbed": 72000 },
+      "fulfilmentRate": 76,
+      "lanesServed": ["B-C", "C-D"],
+      "truckTypes": ["40ft", "flatbed"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "0123468",
+      "bankName": "Standard Chartered",
+      "bankAccount": "0028901234"
+    }
+  },
+  {
+    "id": "C029",
+    "name": "Phoenix Road Services",
+    "evalLabel": "Top",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 89,
+      "onTimePickupRate": 91,
+      "averageRatePKR": { "20ft": 44000, "small_van": 11000 },
+      "fulfilmentRate": 93,
+      "lanesServed": ["A-B", "B-C", "C-D", "A-D"],
+      "truckTypes": ["20ft", "small_van", "mazda"],
+      "totalTrucks": 7,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "1234579",
+      "bankName": "Meezan",
+      "bankAccount": "0019012345"
+    }
+  },
+  {
+    "id": "C030",
+    "name": "Valley Transport Co",
+    "evalLabel": "Improvement",
+    "isLabelled": false,
+    "knownIssues": ["Low fulfilment rate"],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 58,
+      "onTimePickupRate": 65,
+      "averageRatePKR": { "40ft": 84000 },
+      "fulfilmentRate": 52,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "2345680",
+      "bankName": "HBL",
+      "bankAccount": "0090123456"
+    }
+  },
+  {
+    "id": "C031",
+    "name": "Capital Freight Ltd",
+    "evalLabel": "Mid",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 66,
+      "onTimePickupRate": 74,
+      "averageRatePKR": { "40ft": 84500 },
+      "fulfilmentRate": 73,
+      "lanesServed": ["A-B", "A-D"],
+      "truckTypes": ["40ft", "20ft"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "3456791",
+      "bankName": "MCB",
+      "bankAccount": "0081234567"
+    }
+  },
+  {
+    "id": "C032",
+    "name": "Mountain Pass Movers",
+    "evalLabel": "Provisional",
+    "isLabelled": false,
+    "knownIssues": ["New carrier"],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": null,
+      "onTimePickupRate": null,
+      "averageRatePKR": { "40ft": 85000, "flatbed": 72000 },
+      "fulfilmentRate": null,
+      "lanesServed": ["B-C", "C-D"],
+      "truckTypes": ["40ft", "flatbed"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "4567802",
+      "bankName": "UBL",
+      "bankAccount": "0072345678"
+    }
+  },
+  {
+    "id": "C033",
+    "name": "Prime Route Carriers",
+    "evalLabel": "Top",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 86,
+      "onTimePickupRate": 89,
+      "averageRatePKR": { "40ft": 83500 },
+      "fulfilmentRate": 91,
+      "lanesServed": ["A-B", "B-C", "A-D"],
+      "truckTypes": ["40ft", "20ft"],
+      "totalTrucks": 5,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "5678913",
+      "bankName": "Meezan",
+      "bankAccount": "0063456789"
+    }
+  },
+  {
+    "id": "C034",
+    "name": "Blue Sky Logistics",
+    "evalLabel": "Mid",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 71,
+      "onTimePickupRate": 75,
+      "averageRatePKR": { "mazda": 17500, "small_van": 11000 },
+      "fulfilmentRate": 74,
+      "lanesServed": ["A-B", "B-C"],
+      "truckTypes": ["mazda", "small_van"],
+      "totalTrucks": 4,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "6789024",
+      "bankName": "Allied Bank",
+      "bankAccount": "0054567890"
+    }
+  },
+  {
+    "id": "C035",
+    "name": "Frontier Freight Co",
+    "evalLabel": "Improvement",
+    "isLabelled": false,
+    "knownIssues": ["Single lane, low on-time"],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 48,
+      "onTimePickupRate": 62,
+      "averageRatePKR": { "40ft": 84000 },
+      "fulfilmentRate": 68,
+      "lanesServed": ["C-D"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 1,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "7890135",
+      "bankName": "HBL",
+      "bankAccount": "0045678901"
+    }
+  },
+  {
+    "id": "C036",
+    "name": "Stellar Transport",
+    "evalLabel": "Top",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 92,
+      "onTimePickupRate": 94,
+      "averageRatePKR": { "40ft": 82000, "flatbed": 70000 },
+      "fulfilmentRate": 95,
+      "lanesServed": ["A-B", "B-C", "C-D"],
+      "truckTypes": ["40ft", "flatbed", "20ft"],
+      "totalTrucks": 6,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "8901246",
+      "bankName": "MCB",
+      "bankAccount": "0036789012"
+    }
+  },
+  {
+    "id": "C037",
+    "name": "Rapid Road Movers",
+    "evalLabel": "Mid",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 69,
+      "onTimePickupRate": 72,
+      "averageRatePKR": { "40ft": 86000 },
+      "fulfilmentRate": 71,
+      "lanesServed": ["A-B", "C-D"],
+      "truckTypes": ["40ft"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "9012357",
+      "bankName": "Askari Bank",
+      "bankAccount": "0027890123"
+    }
+  },
+  {
+    "id": "C038",
+    "name": "Desert Rose Freight",
+    "evalLabel": "Provisional",
+    "isLabelled": false,
+    "knownIssues": ["New carrier"],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": null,
+      "onTimePickupRate": null,
+      "averageRatePKR": { "40ft": 85000, "mazda": 18000 },
+      "fulfilmentRate": null,
+      "lanesServed": ["A-B"],
+      "truckTypes": ["40ft", "mazda"],
+      "totalTrucks": 3,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "0123468",
+      "bankName": "Faysal Bank",
+      "bankAccount": "0018901234"
+    }
+  },
+  {
+    "id": "C039",
+    "name": "Omega Carriers",
+    "evalLabel": "Top",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 88,
+      "onTimePickupRate": 90,
+      "averageRatePKR": { "40ft": 83000, "20ft": 43500 },
+      "fulfilmentRate": 92,
+      "lanesServed": ["A-B", "B-C", "A-D"],
+      "truckTypes": ["40ft", "20ft"],
+      "totalTrucks": 5,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "1234579",
+      "bankName": "Meezan",
+      "bankAccount": "0009012345"
+    }
+  },
+  {
+    "id": "C040",
+    "name": "Iron Horse Transport",
+    "evalLabel": "Mid",
+    "isLabelled": false,
+    "knownIssues": [],
+    "submission": null,
+    "performanceMetrics": {
+      "appAdoptionScore": 63,
+      "onTimePickupRate": 71,
+      "averageRatePKR": { "flatbed": 73000 },
+      "fulfilmentRate": 70,
+      "lanesServed": ["B-C", "C-D"],
+      "truckTypes": ["flatbed"],
+      "totalTrucks": 2,
+      "firstLoadCompleted": true,
+      "appSignup": true,
+      "taxId": "2345680",
+      "bankName": "Standard Chartered",
+      "bankAccount": "0090901234"
+    }
+  }
+]

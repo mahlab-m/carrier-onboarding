@@ -1,0 +1,949 @@
+{
+  "C001": {
+    "carrierId": "C001",
+    "carrierName": "Al-Amin Transport",
+    "timestamp": "2026-06-13T09:00:00.000Z",
+    "rawBlob": "Hi, registering Al-Amin Transport for onboarding. Tax ID is 1234567, bank account MCB 0012345678, account title Al-Amin Transport. We cover City A to B and City B to C. Fleet: 3x 40ft containers and 2x flatbed. App signup done, first load completed last week. On time 92% last quarter, fulfillment 95%.",
+    "finalTier": "Top",
+    "stages": {
+      "extract": {
+        "taxId": "1234567", "bankName": "MCB", "bankAccount": "0012345678",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B", "B-C"], "truckTypes": ["40ft", "flatbed"], "totalTrucks": 5,
+        "extractionNotes": "All fields extracted cleanly. Truck count confirmed as 5 (3x 40ft + 2x flatbed)."
+      },
+      "validate": {
+        "passed": true,
+        "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 1234567 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: MCB." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0012345678." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 2 truck type(s) declared." }
+        ],
+        "rejectionMessage": null
+      },
+      "qualify": {
+        "passed": true, "provisional": false,
+        "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 1234567 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "MCB, account 0012345678 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, B-C. 2 truck type(s): 40ft, flatbed." }
+        ],
+        "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)."
+      },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 90, "weight": 0.2, "weightedScore": 18, "rationale": "Carrier uses the platform actively — daily load confirmations and tracking updates logged consistently." },
+          { "metric": "On-Time Pickup", "score": 92, "weight": 0.2, "weightedScore": 18.4, "rationale": "92% on-time pickup over the last quarter. Consistently above the 85% SLA threshold." },
+          { "metric": "Pricing Competitiveness", "score": 83, "weight": 0.2, "weightedScore": 16.6, "rationale": "On A-B: PKR 84,000 vs benchmark PKR 85,000 — at market. On B-C: PKR 84,000 vs PKR 72,000 benchmark — 17% above, reducing score on that lane. Blended score reflects competitive A-B pricing dragged by B-C." },
+          { "metric": "Fulfilment Rate", "score": 95, "weight": 0.2, "weightedScore": 19, "rationale": "95% fulfilment rate — one of the strongest in the current network. Near zero load cancellations." },
+          { "metric": "Supply Breadth", "score": 50, "weight": 0.2, "weightedScore": 10, "rationale": "2 lanes (A-B, B-C) and 2 truck types (40ft, flatbed) across a 5-truck fleet. Good but not yet serving the A-D long-haul corridor where capacity gaps exist." }
+        ],
+        "totalScore": 82,
+        "tier": "Top",
+        "riskFlags": [
+          { "flag": "B-C pricing above benchmark", "severity": "low", "detail": "40ft rate on B-C is PKR 84,000 vs PKR 72,000 benchmark (17% above). Monitor at next renewal — not yet a concern given strong fulfilment." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "Al-Amin Transport is a clear Top-tier carrier. Strong fulfilment (95%) and on-time rates (92%) reflect reliable operations. Pricing is competitive on the high-volume A-B corridor. The B-C rate is above benchmark but not egregiously so, and the fulfilment record justifies continued Top-tier allocation. Recommend adding them to the A-D corridor — their flatbed fleet is suited to long-haul."
+      }
+    },
+    "tokenUsage": { "extractTokens": 612, "agentTokens": 2847, "totalTokens": 3459 }
+  },
+
+  "C002": {
+    "carrierId": "C002",
+    "carrierName": "Pak Swift Logistics",
+    "timestamp": "2026-06-13T09:01:00.000Z",
+    "rawBlob": "Salam, this is Pak Swift Logistics. Registration details: NTN/Tax 9876543, HBL account 0098765432 title Pak Swift Logistics. We have 4 trucks: 2x 40ft and 2x 20ft. Operating on A-B, B-C and A-D lanes. App registered and active daily. First load done 2 months ago. Pickup on time 89%, fulfillment 91%, rates competitive per market.",
+    "finalTier": "Top",
+    "stages": {
+      "extract": {
+        "taxId": "9876543", "bankName": "HBL", "bankAccount": "0098765432",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B", "B-C", "A-D"], "truckTypes": ["40ft", "20ft"], "totalTrucks": 4,
+        "extractionNotes": "Clean extraction. NTN prefixed as 'NTN/Tax' — digits extracted correctly."
+      },
+      "validate": {
+        "passed": true,
+        "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 9876543 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: HBL." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0098765432." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "3 lane(s) and 2 truck type(s) declared." }
+        ],
+        "rejectionMessage": null
+      },
+      "qualify": {
+        "passed": true, "provisional": false,
+        "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 9876543 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "HBL, account 0098765432 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed 2 months ago." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "3 lane(s): A-B, B-C, A-D. 2 truck type(s): 40ft, 20ft." }
+        ],
+        "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)."
+      },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 88, "weight": 0.2, "weightedScore": 17.6, "rationale": "High daily app activity — load confirmations, tracking, and rate negotiations logged through the platform." },
+          { "metric": "On-Time Pickup", "score": 89, "weight": 0.2, "weightedScore": 17.8, "rationale": "89% on-time rate over 2 months of operation. Consistent across all three lanes." },
+          { "metric": "Pricing Competitiveness", "score": 90, "weight": 0.2, "weightedScore": 18, "rationale": "40ft A-B at PKR 83,000 (vs PKR 85,000 benchmark) — at market. 20ft A-B at PKR 44,000 (vs PKR 45,000) — at market. A-D rates well below benchmark — competitive advantage on long-haul." },
+          { "metric": "Fulfilment Rate", "score": 91, "weight": 0.2, "weightedScore": 18.2, "rationale": "91% fulfilment rate is strong for a carrier 2 months into operations. Indicates reliable fleet availability." },
+          { "metric": "Supply Breadth", "score": 60, "weight": 0.2, "weightedScore": 12, "rationale": "3 lanes including the high-value A-D long-haul corridor. 4-truck fleet across two types. Well-positioned for network needs." }
+        ],
+        "totalScore": 84,
+        "tier": "Top",
+        "riskFlags": [],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "Pak Swift Logistics is a Top-tier carrier. Coverage of the A-D corridor is particularly valuable given current capacity gaps there. Pricing is at or below benchmark across all lanes. 91% fulfilment at only 2 months of age is exceptional — this carrier has the profile to become a network anchor on the A-D route."
+      }
+    },
+    "tokenUsage": { "extractTokens": 588, "agentTokens": 2914, "totalTokens": 3502 }
+  },
+
+  "C003": {
+    "carrierId": "C003",
+    "carrierName": "Hamza Freight Co",
+    "timestamp": "2026-06-13T09:02:00.000Z",
+    "rawBlob": "Good morning. Hamza Freight Co applying for carrier registration. Tax number 3456789, bank Meezan Bank account 0033445566. We operate City A to B lane with 2x 40ft trucks. Just completed first load this week. App downloaded and active. Ready to take more loads.",
+    "finalTier": "Provisional",
+    "stages": {
+      "extract": {
+        "taxId": "3456789", "bankName": "Meezan Bank", "bankAccount": "0033445566",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B"], "truckTypes": ["40ft"], "totalTrucks": 2,
+        "extractionNotes": "Clean extraction. First load confirmed as completed this week."
+      },
+      "validate": {
+        "passed": true,
+        "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 3456789 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Meezan Bank." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0033445566." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "1 lane(s) and 1 truck type(s) declared." }
+        ],
+        "rejectionMessage": null
+      },
+      "qualify": {
+        "passed": true, "provisional": false,
+        "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 3456789 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "Meezan Bank, account 0033445566 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed this week." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "1 lane(s): A-B. 1 truck type(s): 40ft." }
+        ],
+        "summary": "Carrier qualifies on all compliance criteria. Provisional status — first load just completed, no performance history available. Route to performance assessment with Provisional flag."
+      },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": null, "weight": 0.2, "weightedScore": 0, "rationale": "No app activity data available — carrier completed first load this week." },
+          { "metric": "On-Time Pickup", "score": null, "weight": 0.2, "weightedScore": 0, "rationale": "No on-time pickup data available — insufficient load history." },
+          { "metric": "Pricing Competitiveness", "score": 100, "weight": 0.2, "weightedScore": 20, "rationale": "Quoted rate for A-B 40ft is PKR 85,000 — exactly at benchmark. Competitive from day one." },
+          { "metric": "Fulfilment Rate", "score": null, "weight": 0.2, "weightedScore": 0, "rationale": "No fulfilment data available — one load completed." },
+          { "metric": "Supply Breadth", "score": 22, "weight": 0.2, "weightedScore": 4.4, "rationale": "Single lane (A-B) and single truck type (40ft) with 2 trucks. Narrow initial footprint — typical for a new entrant." }
+        ],
+        "totalScore": null,
+        "tier": "Provisional",
+        "riskFlags": [
+          { "flag": "No performance history", "severity": "low", "detail": "Carrier completed first load this week. All performance metrics are unknown. Standard Provisional designation." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": [
+          "Day 1: Confirm second load is scheduled on A-B",
+          "Day 30: Review on-time pickup rate from first 5 loads — target ≥85%",
+          "Day 30: Confirm app is being used for load management (not phone-only)",
+          "Day 60: Assess fulfilment rate — target ≥80%",
+          "Day 60: Review pricing vs A-B benchmark (currently at market)",
+          "Day 90: Full Scorecard 2 assessment — assign permanent tier"
+        ],
+        "agentRationale": "Hamza Freight Co qualifies on all compliance criteria and pricing is at market rate. No performance data exists yet — first load completed this week. Provisional status is appropriate. The A-B corridor has a high capacity gap, so this carrier adds value to the network immediately. Recommend monitoring closely over the next 90 days and prioritising load allocation to build performance history quickly."
+      }
+    },
+    "tokenUsage": { "extractTokens": 544, "agentTokens": 2631, "totalTokens": 3175 }
+  },
+
+  "C004": {
+    "carrierId": "C004",
+    "carrierName": "City Movers Ltd",
+    "timestamp": "2026-06-13T09:03:00.000Z",
+    "rawBlob": "Assalamualaikum. City Movers Ltd wants to register. Tax ID 5678901, bank Allied Bank 0055667788 account title City Movers Ltd. We have 1x 40ft and 1x Mazda. Can do City A to B and City C to D. App signup complete. No loads done yet but ready to start immediately.",
+    "finalTier": "Provisional",
+    "stages": {
+      "extract": {
+        "taxId": "5678901", "bankName": "Allied Bank", "bankAccount": "0055667788",
+        "appSignup": true, "firstLoadCompleted": false,
+        "lanesServed": ["A-B", "C-D"], "truckTypes": ["40ft", "mazda"], "totalTrucks": 2,
+        "extractionNotes": "First load explicitly stated as not done yet ('No loads done yet'). Extracted as false."
+      },
+      "validate": {
+        "passed": true,
+        "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 5678901 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Allied Bank." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0055667788." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 2 truck type(s) declared." }
+        ],
+        "rejectionMessage": null
+      },
+      "qualify": {
+        "passed": true, "provisional": true,
+        "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 5678901 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "Allied Bank, account 0055667788 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": false, "note": "First load not yet completed — Provisional status until first load is done." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, C-D. 2 truck type(s): 40ft, mazda." }
+        ],
+        "summary": "Carrier qualifies on all compliance criteria. Provisional status — first load not yet completed. Proceeding to performance assessment with Provisional flag."
+      },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": null, "weight": 0.2, "weightedScore": 0, "rationale": "No app activity data — carrier has not started operations." },
+          { "metric": "On-Time Pickup", "score": null, "weight": 0.2, "weightedScore": 0, "rationale": "No pickup data available — no loads completed." },
+          { "metric": "Pricing Competitiveness", "score": 98, "weight": 0.2, "weightedScore": 19.6, "rationale": "40ft A-B quoted at PKR 86,000 vs PKR 85,000 benchmark — marginally above but within normal range. Mazda rates at market." },
+          { "metric": "Fulfilment Rate", "score": null, "weight": 0.2, "weightedScore": 0, "rationale": "No fulfilment data — no loads completed." },
+          { "metric": "Supply Breadth", "score": 29, "weight": 0.2, "weightedScore": 5.8, "rationale": "2 lanes (A-B, C-D) and 2 truck types (40ft, mazda) with a 2-truck fleet. Multi-type fleet is a positive signal for versatility." }
+        ],
+        "totalScore": null,
+        "tier": "Provisional",
+        "riskFlags": [
+          { "flag": "No loads completed", "severity": "low", "detail": "Carrier has not yet completed a first load. Compliant on all documentation. Pending operational activation." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": [
+          "Day 1: Coordinate first load assignment on A-B — high capacity gap lane, good fit",
+          "Day 14: Confirm first load completed and on-time",
+          "Day 30: Review first 3 loads — on-time and fulfilment rates",
+          "Day 60: Assess app adoption — city-level ops team to verify platform usage",
+          "Day 90: Full Scorecard 2 assessment — assign permanent tier based on 90 days of data"
+        ],
+        "agentRationale": "City Movers Ltd is fully compliant on all documentation. Fleet covers both A-B (high capacity gap) and C-D, and the Mazda adds flexibility for smaller loads. The only flag is no first load completed. Recommend prioritising an A-B assignment to activate this carrier quickly — the lane needs supply."
+      }
+    },
+    "tokenUsage": { "extractTokens": 561, "agentTokens": 2703, "totalTokens": 3264 }
+  },
+
+  "C005": {
+    "carrierId": "C005",
+    "carrierName": "Rehman Cargo Services",
+    "timestamp": "2026-06-13T09:04:00.000Z",
+    "rawBlob": "Hi team. Rehman Cargo Services here. Bank account UBL 0077889900, account in name of Rehman Cargo. We have 3 Mazda trucks doing City A to B and B to C. App is registered. Tax documents we will send separately bhai, NTN pending renewal. First load done 1 month back.",
+    "finalTier": "Rejected",
+    "stages": {
+      "extract": {
+        "taxId": null, "bankName": "UBL", "bankAccount": "0077889900",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B", "B-C"], "truckTypes": ["mazda"], "totalTrucks": 3,
+        "extractionNotes": "Tax ID not found — carrier explicitly states NTN is pending renewal and will be sent separately. Extracted as null."
+      },
+      "validate": {
+        "passed": false,
+        "fields": [
+          { "field": "Tax ID", "present": false, "formatValid": false, "reason": "Tax ID not found in submission. Carrier must provide their 7-digit NTN. Note: carrier stated NTN renewal is pending." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: UBL." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0077889900." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 1 truck type(s) declared." }
+        ],
+        "rejectionMessage": "Submission incomplete. Please provide the following before onboarding can proceed:\n\n• Tax ID: Tax ID not found in submission. Carrier must provide their 7-digit NTN. Note: carrier stated NTN renewal is pending."
+      },
+      "qualify": {
+        "passed": false, "provisional": false,
+        "criteria": [
+          { "criterion": "Tax ID", "passed": false, "note": "Tax ID not found in submission. NTN pending renewal per carrier." },
+          { "criterion": "Bank Details", "passed": true, "note": "UBL, account 0077889900 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed 1 month ago." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, B-C. 1 truck type(s): mazda." }
+        ],
+        "summary": "Carrier did not pass compliance validation. Rejected before qualification."
+      },
+      "score": null
+    },
+    "tokenUsage": { "extractTokens": 521, "agentTokens": 0, "totalTokens": 521 }
+  },
+
+  "C006": {
+    "carrierId": "C006",
+    "carrierName": "Northern Express Transport",
+    "timestamp": "2026-06-13T09:05:00.000Z",
+    "rawBlob": "Northern Express Transport registration. Tax ID 6789012. We cover A-B, B-C, C-D lanes. Fleet: 2x 40ft, 1x 20ft. App active. First load completed. Bank details we forgot to include, will send separately on WhatsApp. On time delivery 85%, fulfillment 88%.",
+    "finalTier": "Rejected",
+    "stages": {
+      "extract": {
+        "taxId": "6789012", "bankName": null, "bankAccount": null,
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B", "B-C", "C-D"], "truckTypes": ["40ft", "20ft"], "totalTrucks": 3,
+        "extractionNotes": "Bank details explicitly stated as missing ('forgot to include, will send separately'). Extracted as null."
+      },
+      "validate": {
+        "passed": false,
+        "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 6789012 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": false, "formatValid": false, "reason": "Bank name not found. Carrier must provide their bank name for payment processing." },
+          { "field": "Bank Account Number", "present": false, "formatValid": false, "reason": "Bank account number not found. Required for payment processing and withholding tax compliance." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "3 lane(s) and 2 truck type(s) declared." }
+        ],
+        "rejectionMessage": "Submission incomplete. Please provide the following before onboarding can proceed:\n\n• Bank Name: Bank name not found. Carrier must provide their bank name for payment processing.\n• Bank Account Number: Bank account number not found. Required for payment processing and withholding tax compliance."
+      },
+      "qualify": {
+        "passed": false, "provisional": false,
+        "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 6789012 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": false, "note": "Bank name and account not provided." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "3 lane(s): A-B, B-C, C-D. 2 truck type(s): 40ft, 20ft." }
+        ],
+        "summary": "Carrier did not pass compliance validation. Rejected before qualification."
+      },
+      "score": null
+    },
+    "tokenUsage": { "extractTokens": 498, "agentTokens": 0, "totalTokens": 498 }
+  },
+
+  "C007": {
+    "carrierId": "C007",
+    "carrierName": "Faisal Brothers Trucking",
+    "timestamp": "2026-06-13T09:06:00.000Z",
+    "rawBlob": "Bhai registering Faisal Brothers Trucking. We have 5 trucks: 3x flatbed 2x 40ft. All lanes A B C D. App downloaded. First load done. Tax and bank docs are at office will bring tomorrow. Please register us.",
+    "finalTier": "Rejected",
+    "stages": {
+      "extract": {
+        "taxId": null, "bankName": null, "bankAccount": null,
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B", "B-C", "C-D", "A-D"], "truckTypes": ["flatbed", "40ft"], "totalTrucks": 5,
+        "extractionNotes": "Tax ID and bank details both missing — carrier states documents are at the office and will be brought tomorrow."
+      },
+      "validate": {
+        "passed": false,
+        "fields": [
+          { "field": "Tax ID", "present": false, "formatValid": false, "reason": "Tax ID not found in submission. Carrier must provide their 7-digit NTN." },
+          { "field": "Bank Name", "present": false, "formatValid": false, "reason": "Bank name not found. Carrier must provide their bank name for payment processing." },
+          { "field": "Bank Account Number", "present": false, "formatValid": false, "reason": "Bank account number not found. Required for payment processing and withholding tax compliance." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "4 lane(s) and 2 truck type(s) declared." }
+        ],
+        "rejectionMessage": "Submission incomplete. Please provide the following before onboarding can proceed:\n\n• Tax ID: Tax ID not found in submission. Carrier must provide their 7-digit NTN.\n• Bank Name: Bank name not found. Carrier must provide their bank name for payment processing.\n• Bank Account Number: Bank account number not found. Required for payment processing and withholding tax compliance."
+      },
+      "qualify": {
+        "passed": false, "provisional": false,
+        "criteria": [
+          { "criterion": "Tax ID", "passed": false, "note": "Tax ID not found — carrier stated docs at office." },
+          { "criterion": "Bank Details", "passed": false, "note": "Bank name and account not provided." },
+          { "criterion": "App Signup", "passed": true, "note": "App signup confirmed." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "4 lane(s): A-B, B-C, C-D, A-D. 2 truck type(s): flatbed, 40ft." }
+        ],
+        "summary": "Carrier did not pass compliance validation. Rejected before qualification."
+      },
+      "score": null
+    },
+    "tokenUsage": { "extractTokens": 487, "agentTokens": 0, "totalTokens": 487 }
+  },
+
+  "C008": {
+    "carrierId": "C008",
+    "carrierName": "Speedway Logistics",
+    "timestamp": "2026-06-13T09:07:00.000Z",
+    "rawBlob": "Speedway Logistics registration. NTN: PK-12345-ABC, bank Habib Metro 0011223344 account Speedway Logistics. Fleet 2x 40ft on A-B lane. App registered. First load 2 weeks ago. Good track record.",
+    "finalTier": "Rejected",
+    "stages": {
+      "extract": {
+        "taxId": "PK-12345-ABC", "bankName": "Habib Metro", "bankAccount": "0011223344",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B"], "truckTypes": ["40ft"], "totalTrucks": 2,
+        "extractionNotes": "NTN extracted as provided: 'PK-12345-ABC'. Contains letters — not a 7-digit numeric format. Flagged for validation."
+      },
+      "validate": {
+        "passed": false,
+        "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": false, "reason": "Tax ID \"PK-12345-ABC\" is not a valid 7-digit number. Check the NTN format — NTN must be exactly 7 digits." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Habib Metro." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0011223344." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "1 lane(s) and 1 truck type(s) declared." }
+        ],
+        "rejectionMessage": "Submission incomplete. Please provide the following before onboarding can proceed:\n\n• Tax ID: Tax ID \"PK-12345-ABC\" is not a valid 7-digit number. Check the NTN format — NTN must be exactly 7 digits."
+      },
+      "qualify": {
+        "passed": false, "provisional": false,
+        "criteria": [
+          { "criterion": "Tax ID", "passed": false, "note": "Format invalid: 'PK-12345-ABC' is not a 7-digit NTN." },
+          { "criterion": "Bank Details", "passed": true, "note": "Habib Metro, account 0011223344 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed 2 weeks ago." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "1 lane(s): A-B. 1 truck type(s): 40ft." }
+        ],
+        "summary": "Carrier did not pass compliance validation. Rejected before qualification."
+      },
+      "score": null
+    },
+    "tokenUsage": { "extractTokens": 503, "agentTokens": 0, "totalTokens": 503 }
+  },
+
+  "C009": {
+    "carrierId": "C009",
+    "carrierName": "Premium Haulage Co",
+    "timestamp": "2026-06-13T09:08:00.000Z",
+    "rawBlob": "Premium Haulage Co. Tax 2345678, bank Askari Bank 0022334455. We operate A-B with 2x 40ft. App active, first load done 3 months ago. Our rates are premium quality service.",
+    "finalTier": "Improvement",
+    "stages": {
+      "extract": {
+        "taxId": "2345678", "bankName": "Askari Bank", "bankAccount": "0022334455",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B"], "truckTypes": ["40ft"], "totalTrucks": 2,
+        "extractionNotes": "Carrier mentions 'premium quality service' but no specific rate quoted. Rate data sourced from performance metrics."
+      },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 2345678 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Askari Bank." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0022334455." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "1 lane(s) and 1 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 2345678 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "Askari Bank, account 0022334455 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed 3 months ago." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "1 lane(s): A-B. 1 truck type(s): 40ft." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 68, "weight": 0.2, "weightedScore": 13.6, "rationale": "Moderate app usage — loads confirmed via app but some communication still happening off-platform." },
+          { "metric": "On-Time Pickup", "score": 80, "weight": 0.2, "weightedScore": 16, "rationale": "80% on-time rate is adequate but sits below the 85% SLA threshold. Needs attention." },
+          { "metric": "Pricing Competitiveness", "score": 36, "weight": 0.2, "weightedScore": 7.2, "rationale": "40ft rate on A-B is PKR 112,000 vs benchmark PKR 85,000 — 32% above market. This is the defining issue for this carrier." },
+          { "metric": "Fulfilment Rate", "score": 78, "weight": 0.2, "weightedScore": 15.6, "rationale": "78% fulfilment is below the 85% network expectation. Some load cancellations logged." },
+          { "metric": "Supply Breadth", "score": 24, "weight": 0.2, "weightedScore": 4.8, "rationale": "Single lane (A-B only) and single truck type. No coverage of B-C or the high-value A-D corridor." }
+        ],
+        "totalScore": 57,
+        "tier": "Improvement",
+        "riskFlags": [
+          { "flag": "Pricing 32% above A-B benchmark", "severity": "high", "detail": "PKR 112,000 vs PKR 85,000 benchmark. At this rate Premium Haulage cannot compete for loads when the lane has other qualified carriers. Shippers will route around them." },
+          { "flag": "Single-lane concentration", "severity": "medium", "detail": "100% of revenue from A-B. No coverage of B-C or A-D — zero resilience if A-B demand drops." },
+          { "flag": "On-time rate below SLA", "severity": "low", "detail": "80% on-time sits 5pp below the 85% SLA threshold." }
+        ],
+        "improvementPlan": [
+          { "action": "Reduce 40ft rate on A-B to PKR 90,000 or below within 30 days", "target": "PKR ≤90,000 (currently PKR 112,000, benchmark PKR 85,000)", "deadline": "30 days" },
+          { "action": "Activate on B-C lane to reduce single-lane concentration risk", "target": "At least 2 loads on B-C within 60 days", "deadline": "60 days" },
+          { "action": "Improve on-time pickup rate to ≥85% SLA", "target": "≥85% on-time pickup (currently 80%)", "deadline": "30 days" },
+          { "action": "Increase fulfilment rate to ≥85%", "target": "≥85% fulfilment (currently 78%)", "deadline": "30 days" }
+        ],
+        "monitoringChecklist": null,
+        "agentRationale": "Weighted score of 57 places Premium Haulage technically in the Mid band, but pricing 32% above the A-B benchmark is a structural problem that warrants Improvement tier. At PKR 112,000 on a lane with a PKR 85,000 benchmark, this carrier will consistently lose loads to competitors when alternatives exist. The combination of above-market pricing, single-lane exposure, and a below-SLA on-time rate makes this a carrier at risk of becoming inactive. Placing in Improvement tier to force a pricing conversation and lane expansion."
+      }
+    },
+    "tokenUsage": { "extractTokens": 547, "agentTokens": 3102, "totalTokens": 3649 }
+  },
+
+  "C010": {
+    "carrierId": "C010",
+    "carrierName": "Single Lane Movers",
+    "timestamp": "2026-06-13T09:09:00.000Z",
+    "rawBlob": "Single Lane Movers. NTN 3456780, Faysal Bank 0033445577 account Single Lane Movers. We specialise in City A to B only, have 2x 40ft trucks, this is our main route. App active, first load done. Good on-time rate.",
+    "finalTier": "Mid",
+    "stages": {
+      "extract": { "taxId": "3456780", "bankName": "Faysal Bank", "bankAccount": "0033445577", "appSignup": true, "firstLoadCompleted": true, "lanesServed": ["A-B"], "truckTypes": ["40ft"], "totalTrucks": 2, "extractionNotes": "Carrier explicitly states A-B only as their specialisation." },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 3456780 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Faysal Bank." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0033445577." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "1 lane(s) and 1 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 3456780 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "Faysal Bank, account 0033445577 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "1 lane(s): A-B. 1 truck type(s): 40ft." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 72, "weight": 0.2, "weightedScore": 14.4, "rationale": "Regular app usage for load management. Some off-platform communication still occurring." },
+          { "metric": "On-Time Pickup", "score": 84, "weight": 0.2, "weightedScore": 16.8, "rationale": "84% on-time rate — just below the 85% SLA threshold. Borderline but acceptable." },
+          { "metric": "Pricing Competitiveness", "score": 100, "weight": 0.2, "weightedScore": 20, "rationale": "A-B 40ft rate at PKR 84,500 vs PKR 85,000 benchmark — effectively at market." },
+          { "metric": "Fulfilment Rate", "score": 83, "weight": 0.2, "weightedScore": 16.6, "rationale": "83% fulfilment. Slightly below the 85% target but consistent." },
+          { "metric": "Supply Breadth", "score": 24, "weight": 0.2, "weightedScore": 4.8, "rationale": "Single lane (A-B) and single truck type. Narrow footprint — carrier explicitly specialises in one route." }
+        ],
+        "totalScore": 73,
+        "tier": "Mid",
+        "riskFlags": [
+          { "flag": "Single-lane concentration", "severity": "high", "detail": "100% of this carrier's activity is on A-B. Zero resilience if A-B demand drops or a capacity surplus emerges. The network cannot depend on single-lane specialists for long-term stability." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "Single Lane Movers performs solidly on A-B — pricing at benchmark, consistent fulfilment, and near-SLA on-time rates. The score of 73 is a firm Mid. The high-severity supply breadth risk is the critical flag: this carrier has no resilience beyond A-B. Recommend a direct conversation about expanding to B-C, which shares the same starting city. If they can add B-C within 60 days, they move closer to Top tier. Until then, allocate A-B loads confidently but do not make them a primary network dependency."
+      }
+    },
+    "tokenUsage": { "extractTokens": 511, "agentTokens": 2788, "totalTokens": 3299 }
+  },
+
+  "C011": {
+    "carrierId": "C011",
+    "carrierName": "Risky Freight Solutions",
+    "timestamp": "2026-06-13T09:10:00.000Z",
+    "rawBlob": "Risky Freight Solutions. Tax ID 4567890, bank Silkbank 0044556677. Have 3x 40ft on A-B and B-C. App used. First load done 4 months ago. Some loads we couldn't take due to truck issues, working on fleet maintenance.",
+    "finalTier": "Mid",
+    "stages": {
+      "extract": { "taxId": "4567890", "bankName": "Silkbank", "bankAccount": "0044556677", "appSignup": true, "firstLoadCompleted": true, "lanesServed": ["A-B", "B-C"], "truckTypes": ["40ft"], "totalTrucks": 3, "extractionNotes": "Carrier self-reports fulfilment issues ('couldn't take some loads due to truck issues')." },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 4567890 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Silkbank." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0044556677." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 1 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 4567890 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "Silkbank, account 0044556677 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed 4 months ago." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, B-C. 1 truck type(s): 40ft." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 60, "weight": 0.2, "weightedScore": 12, "rationale": "Moderate app usage — loads confirmed via platform but engagement is inconsistent." },
+          { "metric": "On-Time Pickup", "score": 75, "weight": 0.2, "weightedScore": 15, "rationale": "75% on-time rate is 10pp below SLA. Corroborates carrier's self-reported fleet availability issues." },
+          { "metric": "Pricing Competitiveness", "score": 83, "weight": 0.2, "weightedScore": 16.6, "rationale": "A-B rates at market. B-C pricing PKR 84,000 vs PKR 72,000 benchmark — 17% above, reducing blended score." },
+          { "metric": "Fulfilment Rate", "score": 58, "weight": 0.2, "weightedScore": 11.6, "rationale": "58% fulfilment rate is the critical issue. Carrier self-reports truck maintenance problems as the cause. Nearly half of confirmed loads are being cancelled or declined." },
+          { "metric": "Supply Breadth", "score": 39, "weight": 0.2, "weightedScore": 7.8, "rationale": "2 lanes (A-B, B-C) and 1 truck type (40ft) with 3 trucks. Moderate coverage but limited truck-type versatility." }
+        ],
+        "totalScore": 63,
+        "tier": "Mid",
+        "riskFlags": [
+          { "flag": "Fulfilment rate at 58%", "severity": "high", "detail": "58% fulfilment means this carrier declines or misses 42% of assigned loads. At this rate, shipper relationships are at risk and load planning becomes unreliable. Fleet maintenance is cited — needs resolution within 30 days or allocation should be reduced." },
+          { "flag": "On-time rate below SLA", "severity": "medium", "detail": "75% on-time is 10pp below the 85% SLA threshold. Likely connected to the fleet availability issue." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "Risky Freight Solutions scores 63 — solidly Mid on overall metrics. However, the 58% fulfilment rate is a serious operational flag that the score partially masks because pricing and breadth are adequate. The carrier self-identifies the cause (fleet maintenance). Keeping in Mid tier with a 30-day watch: if fulfilment does not improve to ≥75% within 30 days, recommend dropping allocation significantly and initiating an Improvement plan. The fleet issue needs to be resolved before this carrier can be trusted with high-priority loads."
+      }
+    },
+    "tokenUsage": { "extractTokens": 532, "agentTokens": 2944, "totalTokens": 3476 }
+  },
+
+  "C012": {
+    "carrierId": "C012",
+    "carrierName": "Offline Transport Co",
+    "timestamp": "2026-06-13T09:11:00.000Z",
+    "rawBlob": "Offline Transport Co registration. NTN 5678902, UBL 0055667799 account name Offline Transport. 3x 40ft on A-B and A-D. First load completed. App downloaded but we mostly work through phone calls and WhatsApp, not used to the app yet. Good fulfillment otherwise.",
+    "finalTier": "Mid",
+    "stages": {
+      "extract": { "taxId": "5678902", "bankName": "UBL", "bankAccount": "0055667799", "appSignup": true, "firstLoadCompleted": true, "lanesServed": ["A-B", "A-D"], "truckTypes": ["40ft"], "totalTrucks": 3, "extractionNotes": "App signup confirmed (downloaded) but carrier explicitly states they don't use it — extracted appSignup as true but noted." },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 5678902 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: UBL." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0055667799." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App downloaded — signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 1 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 5678902 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "UBL, account 0055667799 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "App downloaded. Carrier notes limited usage — flagged in performance assessment." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, A-D. 1 truck type(s): 40ft." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 18, "weight": 0.2, "weightedScore": 3.6, "rationale": "18% app adoption is critically low. Carrier self-reports operating primarily via phone and WhatsApp. This is the dominant risk: load visibility, tracking, and payment reconciliation all depend on platform usage." },
+          { "metric": "On-Time Pickup", "score": 82, "weight": 0.2, "weightedScore": 16.4, "rationale": "82% on-time — close to SLA threshold. Solid despite operating largely off-platform." },
+          { "metric": "Pricing Competitiveness", "score": 100, "weight": 0.2, "weightedScore": 20, "rationale": "A-B at benchmark, A-D well below the PKR 120,000 benchmark — competitive on the long-haul corridor." },
+          { "metric": "Fulfilment Rate", "score": 84, "weight": 0.2, "weightedScore": 16.8, "rationale": "84% fulfilment — strong, carrier's own claim of 'good fulfillment otherwise' is corroborated by data." },
+          { "metric": "Supply Breadth", "score": 39, "weight": 0.2, "weightedScore": 7.8, "rationale": "2 lanes including A-D (long-haul). Valuable coverage but single truck type limits versatility." }
+        ],
+        "totalScore": 65,
+        "tier": "Mid",
+        "riskFlags": [
+          { "flag": "App adoption at 18%", "severity": "high", "detail": "Operating primarily via WhatsApp and phone. This breaks load tracking, real-time visibility, and automated payment reconciliation. The ops team is carrying manual overhead for this carrier that the platform is meant to eliminate." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "Offline Transport Co is a competent carrier with strong fulfilment, competitive pricing on A-D, and acceptable on-time rates — but the 18% app adoption is a structural problem the score of 65 does not fully capture. This carrier is generating significant ops overhead by operating off-platform. Mid tier is correct for now. A direct conversation with the carrier is needed: app adoption must reach ≥70% within 60 days or allocation on A-D should be reduced to carriers who operate transparently on the platform."
+      }
+    },
+    "tokenUsage": { "extractTokens": 538, "agentTokens": 2871, "totalTokens": 3409 }
+  },
+
+  "C013": {
+    "carrierId": "C013",
+    "carrierName": "Borderline Mid Transport",
+    "timestamp": "2026-06-13T09:12:00.000Z",
+    "rawBlob": "Borderline Mid Transport here. Tax 6789013, Standard Chartered 0066778899. We do A-B with 1x 40ft. App used occasionally. First load done. Fulfillment ok, rates near market.",
+    "finalTier": "Mid",
+    "stages": {
+      "extract": { "taxId": "6789013", "bankName": "Standard Chartered", "bankAccount": "0066778899", "appSignup": true, "firstLoadCompleted": true, "lanesServed": ["A-B"], "truckTypes": ["40ft"], "totalTrucks": 1, "extractionNotes": "Minimal fleet — 1 truck. All fields extracted." },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 6789013 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Standard Chartered." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0066778899." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "1 lane(s) and 1 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 6789013 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "Standard Chartered, account 0066778899 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "App signup confirmed." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "1 lane(s): A-B. 1 truck type(s): 40ft." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 45, "weight": 0.2, "weightedScore": 9, "rationale": "Occasional app usage — carrier uses it for some confirmations but not consistently." },
+          { "metric": "On-Time Pickup", "score": 72, "weight": 0.2, "weightedScore": 14.4, "rationale": "72% on-time — 13pp below SLA. Suggests scheduling or capacity issues on this single-truck operation." },
+          { "metric": "Pricing Competitiveness", "score": 95, "weight": 0.2, "weightedScore": 19, "rationale": "A-B rate PKR 87,000 vs PKR 85,000 benchmark — 2.4% above, effectively at market." },
+          { "metric": "Fulfilment Rate", "score": 68, "weight": 0.2, "weightedScore": 13.6, "rationale": "68% fulfilment. Below target, but a single-truck operation has limited redundancy when the vehicle is unavailable." },
+          { "metric": "Supply Breadth", "score": 21, "weight": 0.2, "weightedScore": 4.2, "rationale": "Single lane, single truck type, 1 truck. Minimal network contribution capacity." }
+        ],
+        "totalScore": 60,
+        "tier": "Mid",
+        "riskFlags": [
+          { "flag": "On-time rate 13pp below SLA", "severity": "medium", "detail": "72% on-time is a notable gap. Single-truck operations are vulnerable to any vehicle downtime." },
+          { "flag": "Low fleet depth", "severity": "low", "detail": "One truck means zero redundancy. Any maintenance event stops this carrier entirely." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "Borderline Mid Transport scores 60 — clearly Mid, but toward the lower end. Pricing is at market and there are no compliance issues. The constraints are operational: a 1-truck fleet on a single lane creates fragility in fulfilment and on-time performance. This carrier is suitable for non-critical A-B loads where a slight delay or cancellation can be absorbed. Not suitable for time-sensitive or high-value loads."
+      }
+    },
+    "tokenUsage": { "extractTokens": 489, "agentTokens": 2614, "totalTokens": 3103 }
+  },
+
+  "C014": {
+    "carrierId": "C014",
+    "carrierName": "Top Edge Carriers",
+    "timestamp": "2026-06-13T09:13:00.000Z",
+    "rawBlob": "Top Edge Carriers. NTN 7890134, MCB 0077889911 account Top Edge Carriers. Fleet: 2x 40ft and 1x 20ft. Lanes A-B and B-C. App active daily. First load done. On time 80%, fulfillment 83%, rates just under benchmark.",
+    "finalTier": "Top",
+    "stages": {
+      "extract": { "taxId": "7890134", "bankName": "MCB", "bankAccount": "0077889911", "appSignup": true, "firstLoadCompleted": true, "lanesServed": ["A-B", "B-C"], "truckTypes": ["40ft", "20ft"], "totalTrucks": 3, "extractionNotes": "Carrier self-reports rates as 'just under benchmark' — confirmed against market data." },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 7890134 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: MCB." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0077889911." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 2 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 7890134 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "MCB, account 0077889911 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, B-C. 2 truck type(s): 40ft, 20ft." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 80, "weight": 0.2, "weightedScore": 16, "rationale": "Active daily — load confirmations, rate updates, and tracking all happening through the platform." },
+          { "metric": "On-Time Pickup", "score": 80, "weight": 0.2, "weightedScore": 16, "rationale": "80% on-time — just below the 85% SLA. Not yet at the Top-tier standard, but the trajectory matters." },
+          { "metric": "Pricing Competitiveness", "score": 87, "weight": 0.2, "weightedScore": 17.4, "rationale": "40ft A-B at PKR 82,000 (vs PKR 85,000) — below benchmark. B-C blended: slightly above benchmark. Overall competitive." },
+          { "metric": "Fulfilment Rate", "score": 83, "weight": 0.2, "weightedScore": 16.6, "rationale": "83% fulfilment — slightly below 85% target but consistent across both lanes." },
+          { "metric": "Supply Breadth", "score": 45, "weight": 0.2, "weightedScore": 9, "rationale": "2 lanes, 2 truck types (40ft and 20ft), 3-truck fleet. Versatile enough for mixed load types on A-B and B-C." }
+        ],
+        "totalScore": 75,
+        "tier": "Top",
+        "riskFlags": [
+          { "flag": "On-time rate at 80%", "severity": "low", "detail": "5pp below SLA. Currently borderline Top/Mid — if on-time drops below 78% at next review, tier should be reconsidered." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "Top Edge Carriers scores exactly 75 — the Top tier threshold. This is a borderline case, but the profile warrants Top: below-benchmark pricing on A-B, two truck types providing versatility, and consistent operations across both lanes. The on-time rate at 80% is the only notable gap. This carrier is on a positive trajectory — recommend monitoring on-time at the 60-day mark. A priority for volume growth on A-B given their competitive pricing."
+      }
+    },
+    "tokenUsage": { "extractTokens": 524, "agentTokens": 2809, "totalTokens": 3333 }
+  },
+
+  "C015": {
+    "carrierId": "C015",
+    "carrierName": "Rock Bottom Logistics",
+    "timestamp": "2026-06-13T09:14:00.000Z",
+    "rawBlob": "Rock Bottom Logistics. Tax 8901234, HBL 0088990022. We have 2 40ft on A-B only. App sometimes use it. First load done 6 months ago. Not many loads completed, some issues with truck availability and driver. Rates fixed at 95000.",
+    "finalTier": "Improvement",
+    "stages": {
+      "extract": { "taxId": "8901234", "bankName": "HBL", "bankAccount": "0088990022", "appSignup": true, "firstLoadCompleted": true, "lanesServed": ["A-B"], "truckTypes": ["40ft"], "totalTrucks": 2, "extractionNotes": "Rate explicitly stated: PKR 95,000. Carrier self-reports operational issues." },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 8901234 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: HBL." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0088990022." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "1 lane(s) and 1 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 8901234 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "HBL, account 0088990022 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed 6 months ago." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "1 lane(s): A-B. 1 truck type(s): 40ft." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 22, "weight": 0.2, "weightedScore": 4.4, "rationale": "22% app adoption after 6 months on the platform. Carrier uses it intermittently — load management is predominantly off-platform." },
+          { "metric": "On-Time Pickup", "score": 55, "weight": 0.2, "weightedScore": 11, "rationale": "55% on-time rate — 30pp below SLA. Carrier acknowledges truck availability and driver issues as root cause." },
+          { "metric": "Pricing Competitiveness", "score": 76, "weight": 0.2, "weightedScore": 15.2, "rationale": "PKR 95,000 on A-B vs PKR 85,000 benchmark — 12% above market. Not extreme, but combined with poor operational metrics, shippers have no reason to accept the premium." },
+          { "metric": "Fulfilment Rate", "score": 45, "weight": 0.2, "weightedScore": 9, "rationale": "45% fulfilment rate — less than half of assigned loads are being completed. This is the most critical failure in this profile." },
+          { "metric": "Supply Breadth", "score": 24, "weight": 0.2, "weightedScore": 4.8, "rationale": "Single lane (A-B only), single truck type, 2-truck fleet with documented availability issues." }
+        ],
+        "totalScore": 44,
+        "tier": "Improvement",
+        "riskFlags": [
+          { "flag": "Fulfilment rate at 45%", "severity": "high", "detail": "55% of assigned loads are not being completed. At 6 months of operation, this carrier is at risk of deactivation if no improvement is shown within 30 days." },
+          { "flag": "On-time rate at 55%", "severity": "high", "detail": "30pp below SLA. Structural operational issue — not a one-off. Truck availability and driver issues are carrier-acknowledged." },
+          { "flag": "App adoption at 22% after 6 months", "severity": "medium", "detail": "6 months on the platform with 22% adoption suggests this carrier is not integrating with platform operations." }
+        ],
+        "improvementPlan": [
+          { "action": "Resolve truck availability issues — schedule preventive maintenance for both vehicles", "target": "Both trucks operational and available ≥90% of scheduled days within 30 days", "deadline": "30 days" },
+          { "action": "Improve fulfilment rate to ≥70%", "target": "≥70% fulfilment (currently 45%) — minimum threshold to remain active", "deadline": "30 days" },
+          { "action": "Improve on-time pickup rate to ≥75%", "target": "≥75% on-time (currently 55%)", "deadline": "30 days" },
+          { "action": "Increase app adoption to ≥60%", "target": "≥60% of load interactions through the platform (currently 22%)", "deadline": "30 days" },
+          { "action": "Review A-B pricing — reduce to PKR 88,000 or below", "target": "PKR ≤88,000 on A-B (currently PKR 95,000, benchmark PKR 85,000)", "deadline": "30 days" }
+        ],
+        "monitoringChecklist": null,
+        "agentRationale": "Rock Bottom Logistics scores 44 — clear Improvement tier. This carrier has been operating for 6 months with no meaningful improvement trajectory. 45% fulfilment and 55% on-time rates are not rounding-error gaps — they represent a carrier whose operations are significantly broken. The 30-day improvement plan sets specific, measurable targets. If fulfilment does not reach 70% within 30 days, recommend suspension of load allocation and a formal review for deactivation."
+      }
+    },
+    "tokenUsage": { "extractTokens": 541, "agentTokens": 3214, "totalTokens": 3755 }
+  },
+
+  "C016": {
+    "carrierId": "C016",
+    "carrierName": "Jannat Freight",
+    "timestamp": "2026-06-13T09:15:00.000Z",
+    "rawBlob": "bhai ye jannat freight ki taraf se msg hai, hamara NTN number saat anka ka hai 9012345, hum A-B aur B-C pe chalte hain, hamare paas 40ft ke teen truck hain aur ek flatbed bhi, bank wala Meezan mein hai account zero zero nine nine zero zero one one two two hai, pehla load done hogaya hai, app pe registered hain, on time delivery 88 percent aur fulfillment bhi acha hai 90 percent se upar",
+    "finalTier": "Top",
+    "stages": {
+      "extract": {
+        "taxId": "9012345", "bankName": "Meezan", "bankAccount": "0099001122",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B", "B-C"], "truckTypes": ["40ft", "flatbed"], "totalTrucks": 4,
+        "extractionNotes": "Urdu transliteration throughout. 'saat anka' = 7 digits (NTN confirmed). 'zero zero nine nine...' = account number decoded correctly. '40ft ke teen truck' = 3x 40ft, 'ek flatbed' = 1x flatbed. Extraction successful from informal text."
+      },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 9012345 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Meezan." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0099001122." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 2 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 9012345 — valid 7-digit format confirmed (stated as 'saat anka ka' — 7 digits)." },
+          { "criterion": "Bank Details", "passed": true, "note": "Meezan, account 0099001122 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed ('pehla load done hogaya hai')." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, B-C. 2 truck type(s): 40ft, flatbed." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 82, "weight": 0.2, "weightedScore": 16.4, "rationale": "High app activity. Despite submitting via WhatsApp, platform usage is strong." },
+          { "metric": "On-Time Pickup", "score": 88, "weight": 0.2, "weightedScore": 17.6, "rationale": "88% on-time — well above SLA. Stated in submission and corroborated by platform data." },
+          { "metric": "Pricing Competitiveness", "score": 84, "weight": 0.2, "weightedScore": 16.8, "rationale": "40ft at PKR 83,000 on A-B (below benchmark). B-C at PKR 83,000 vs PKR 72,000 — 15% above benchmark. Blended score reflects the A-B advantage." },
+          { "metric": "Fulfilment Rate", "score": 91, "weight": 0.2, "weightedScore": 18.2, "rationale": "Over 90% fulfilment ('90 percent se upar'). Exceptional reliability." },
+          { "metric": "Supply Breadth", "score": 47, "weight": 0.2, "weightedScore": 9.4, "rationale": "2 lanes, 2 truck types, 4-truck fleet. Strong breadth for a carrier of this size." }
+        ],
+        "totalScore": 78,
+        "tier": "Top",
+        "riskFlags": [],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "Jannat Freight submitted via a chaotic WhatsApp message in Urdu transliteration — but the underlying carrier profile is excellent. 88% on-time, 91% fulfilment, and competitive A-B pricing make this a clear Top-tier carrier. The extraction challenge here is the real story: the system correctly parsed 'saat anka ka NTN', decoded the account number from spoken-word format, and identified all lanes and truck types from informal text. This is precisely the use case the pipeline was designed for."
+      }
+    },
+    "tokenUsage": { "extractTokens": 634, "agentTokens": 2966, "totalTokens": 3600 }
+  },
+
+  "C017": {
+    "carrierId": "C017",
+    "carrierName": "Sardar Transport",
+    "timestamp": "2026-06-13T09:16:00.000Z",
+    "rawBlob": "Assalam o alaikum. Sardar Transport ka registration. Tax number: 0123456. Bank: Bank Al-Habib, account number 0100112233. Gaariyan: 2 cha-kis aur 1 chota Mazda. Lanes: A se B aur B se C. App pe hain, pehla load karwa chuke hain. Timing theek hai, 78 percent on time, fulfillment 75 percent.",
+    "finalTier": "Mid",
+    "stages": {
+      "extract": {
+        "taxId": "0123456", "bankName": "Bank Al-Habib", "bankAccount": "0100112233",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B", "B-C"], "truckTypes": ["40ft", "mazda"], "totalTrucks": 3,
+        "extractionNotes": "'cha-ki' mapped to 40ft (standard Pakistani colloquial term for container truck). 'A se B' = A-B, 'B se C' = B-C. 'chota Mazda' = mazda truck type. All extracted correctly."
+      },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 0123456 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Bank Al-Habib." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0100112233." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 2 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 0123456 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "Bank Al-Habib, account 0100112233 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is on the app ('app pe hain')." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed ('pehla load karwa chuke hain')." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, B-C. 2 truck type(s): 40ft (cha-ki), mazda." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 65, "weight": 0.2, "weightedScore": 13, "rationale": "Moderate platform usage — loads confirmed via app but some coordination still happening off-platform." },
+          { "metric": "On-Time Pickup", "score": 78, "weight": 0.2, "weightedScore": 15.6, "rationale": "78% on-time — stated in submission and confirmed. Below SLA but not critically so." },
+          { "metric": "Pricing Competitiveness", "score": 83, "weight": 0.2, "weightedScore": 16.6, "rationale": "40ft A-B at PKR 86,000 vs PKR 85,000 — at market. B-C slightly above benchmark. Mazda rates competitive." },
+          { "metric": "Fulfilment Rate", "score": 75, "weight": 0.2, "weightedScore": 15, "rationale": "75% fulfilment. Below 85% target but carrier has multi-truck fleet — the Mazda adds redundancy." },
+          { "metric": "Supply Breadth", "score": 45, "weight": 0.2, "weightedScore": 9, "rationale": "2 lanes and 2 truck types (40ft + Mazda) offers versatility — can handle both full-container and smaller loads." }
+        ],
+        "totalScore": 69,
+        "tier": "Mid",
+        "riskFlags": [
+          { "flag": "On-time rate below SLA", "severity": "low", "detail": "78% is 7pp below the 85% SLA. Addressable with improved scheduling." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "Sardar Transport submitted in Urdu transliteration and the pipeline extracted all fields correctly, including mapping 'cha-ki' to 40ft. The carrier is a solid Mid performer: decent breadth, competitive pricing, and an acceptable (if below-SLA) on-time rate. The Mazda adds versatility that the score doesn't fully capture. Recommend steady allocation on A-B and B-C with an on-time improvement target for the next 60-day review."
+      }
+    },
+    "tokenUsage": { "extractTokens": 601, "agentTokens": 2752, "totalTokens": 3353 }
+  },
+
+  "C018": {
+    "carrierId": "C018",
+    "carrierName": "TK Logistics",
+    "timestamp": "2026-06-13T09:17:00.000Z",
+    "rawBlob": "TK Log. reg. NTN 1234560, BAF 0110223344 a/c TK Log. Flt: 2x40 1xfb. Rts: AB BC. App reg, FL done. OT 81%, ful 79%, rts mkt aligned.",
+    "finalTier": "Mid",
+    "stages": {
+      "extract": {
+        "taxId": "1234560", "bankName": "BAF", "bankAccount": "0110223344",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B", "B-C"], "truckTypes": ["40ft", "flatbed"], "totalTrucks": 3,
+        "extractionNotes": "'2x40' = 2x 40ft, '1xfb' = 1x flatbed. 'AB BC' = lanes A-B and B-C. 'BAF' = bank abbreviation (Bank Al-Falah). 'OT' = on-time, 'ful' = fulfilment, 'FL' = first load. All abbreviations decoded correctly."
+      },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 1234560 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: BAF (Bank Al-Falah)." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0110223344." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed ('App reg')." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 2 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": false, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 1234560 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "Bank Al-Falah, account 0110223344 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "App registered ('App reg')." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed ('FL done')." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, B-C. 2 truck type(s): 40ft, flatbed." }
+        ], "summary": "Carrier passes all qualification criteria. Route to performance assessment (Scorecard 2)." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": 70, "weight": 0.2, "weightedScore": 14, "rationale": "Moderate to good app usage. Platform-based load management appears to be the primary channel." },
+          { "metric": "On-Time Pickup", "score": 81, "weight": 0.2, "weightedScore": 16.2, "rationale": "81% on-time — stated as 'OT 81%'. Close to SLA threshold. Consistent across A-B and B-C." },
+          { "metric": "Pricing Competitiveness", "score": 85, "weight": 0.2, "weightedScore": 17, "rationale": "Carrier states 'rts mkt aligned' — rates market-aligned. Confirmed: 40ft A-B near benchmark, B-C slightly above." },
+          { "metric": "Fulfilment Rate", "score": 79, "weight": 0.2, "weightedScore": 15.8, "rationale": "79% fulfilment — 'ful 79%'. Below 85% target but not critically." },
+          { "metric": "Supply Breadth", "score": 45, "weight": 0.2, "weightedScore": 9, "rationale": "2 lanes, 2 truck types (40ft + flatbed), 3-truck fleet. Solid versatility." }
+        ],
+        "totalScore": 72,
+        "tier": "Mid",
+        "riskFlags": [],
+        "improvementPlan": null,
+        "monitoringChecklist": null,
+        "agentRationale": "TK Logistics submitted an extremely abbreviated message — every field was an abbreviation or shorthand. The pipeline decoded it correctly across the board. The carrier is a solid Mid: consistent on-time, market-aligned pricing, and flatbed capability adds versatility for non-containerised loads. No risk flags. A straightforward Mid-tier allocation."
+      }
+    },
+    "tokenUsage": { "extractTokens": 578, "agentTokens": 2698, "totalTokens": 3276 }
+  },
+
+  "C019": {
+    "carrierId": "C019",
+    "carrierName": "Multi-Lane Masters",
+    "timestamp": "2026-06-13T09:18:00.000Z",
+    "rawBlob": "Multi-Lane Masters. Tax 2345670, Meezan 0022334466 account Multi-Lane Masters. We have a large fleet: 3x 40ft, 2x 20ft, 1x flatbed, 2x Mazda. Cover all four lanes A-B, B-C, C-D and A-D. App signup done. No loads yet but ready to start this week.",
+    "finalTier": "Provisional",
+    "stages": {
+      "extract": { "taxId": "2345670", "bankName": "Meezan", "bankAccount": "0022334466", "appSignup": true, "firstLoadCompleted": false, "lanesServed": ["A-B", "B-C", "C-D", "A-D"], "truckTypes": ["40ft", "20ft", "flatbed", "mazda"], "totalTrucks": 8, "extractionNotes": "Large fleet confirmed: 3+2+1+2 = 8 trucks. 4 truck types across all 4 lanes. No loads completed — explicitly stated." },
+      "validate": { "passed": true, "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": true, "reason": "Tax ID 2345670 — valid 7-digit format confirmed." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: Meezan." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0022334466." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "4 lane(s) and 4 truck type(s) declared." }
+        ], "rejectionMessage": null },
+      "qualify": { "passed": true, "provisional": true, "criteria": [
+          { "criterion": "Tax ID", "passed": true, "note": "NTN 2345670 — valid 7-digit format confirmed." },
+          { "criterion": "Bank Details", "passed": true, "note": "Meezan, account 0022334466 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": false, "note": "First load not yet completed — Provisional status until first load is done." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "4 lane(s): A-B, B-C, C-D, A-D. 4 truck type(s): 40ft, 20ft, flatbed, mazda." }
+        ], "summary": "Carrier qualifies on all compliance criteria. Provisional status — first load not yet completed. Proceeding to performance assessment with Provisional flag." },
+      "score": {
+        "metrics": [
+          { "metric": "App Adoption", "score": null, "weight": 0.2, "weightedScore": 0, "rationale": "No app activity data — carrier has not yet started operations." },
+          { "metric": "On-Time Pickup", "score": null, "weight": 0.2, "weightedScore": 0, "rationale": "No pickup data — no loads completed." },
+          { "metric": "Pricing Competitiveness", "score": 100, "weight": 0.2, "weightedScore": 20, "rationale": "Rates quoted at benchmark across all truck types and lanes. Competitive from the start." },
+          { "metric": "Fulfilment Rate", "score": null, "weight": 0.2, "weightedScore": 0, "rationale": "No fulfilment data — no loads completed." },
+          { "metric": "Supply Breadth", "score": 100, "weight": 0.2, "weightedScore": 20, "rationale": "Maximum breadth: all 4 lanes, 4 truck types, 8-truck fleet. This is the highest possible supply breadth score in the current network." }
+        ],
+        "totalScore": null,
+        "tier": "Provisional",
+        "riskFlags": [
+          { "flag": "No operational history", "severity": "low", "detail": "Despite impressive fleet and coverage on paper, no loads have been completed. Operational capability is unproven." }
+        ],
+        "improvementPlan": null,
+        "monitoringChecklist": [
+          "Day 1: Assign first load on A-B (highest capacity gap) — prioritise this carrier for first activation",
+          "Day 7: Confirm first load delivered on time",
+          "Day 30: Review on-time and fulfilment rates from first 10 loads",
+          "Day 30: Verify app adoption — all 8 trucks should be logging through the platform",
+          "Day 60: Assess performance across all 4 lanes — confirm coverage claims match actual operations",
+          "Day 90: Full Scorecard 2 assessment — this carrier has Top-tier potential if operations match the fleet profile"
+        ],
+        "agentRationale": "Multi-Lane Masters has the largest and most diverse fleet in the current onboarding batch — 8 trucks across 4 types covering all 4 lanes at benchmark pricing. On paper, this is a potential Top-tier network anchor. But operational capability is entirely unproven. The Provisional designation is appropriate and the 90-day plan should be treated as a priority: if this carrier delivers on its fleet profile, they should be fast-tracked to Top tier. Recommend assigning the first load on A-B immediately to start building the performance record."
+      }
+    },
+    "tokenUsage": { "extractTokens": 558, "agentTokens": 2815, "totalTokens": 3373 }
+  },
+
+  "C020": {
+    "carrierId": "C020",
+    "carrierName": "Almost There Transport",
+    "timestamp": "2026-06-13T09:19:00.000Z",
+    "rawBlob": "Almost There Transport registration. Tax number 12345678 (8 digits, renewal certificate attached). Bank BankIslami 0033445588 account Almost There Transport. Fleet 2x 40ft and 1x small van. A-B and C-D lanes. App active, first load done. On time 87%, fulfillment 89%.",
+    "finalTier": "Rejected",
+    "stages": {
+      "extract": {
+        "taxId": "12345678", "bankName": "BankIslami", "bankAccount": "0033445588",
+        "appSignup": true, "firstLoadCompleted": true,
+        "lanesServed": ["A-B", "C-D"], "truckTypes": ["40ft", "small_van"], "totalTrucks": 3,
+        "extractionNotes": "Tax ID extracted as provided: '12345678'. Carrier notes '8 digits' — this does not match the 7-digit NTN format requirement. Flagged for validation."
+      },
+      "validate": {
+        "passed": false,
+        "fields": [
+          { "field": "Tax ID", "present": true, "formatValid": false, "reason": "Tax ID \"12345678\" is not a valid 7-digit number. NTN must be exactly 7 digits. Carrier notes '8 digits, renewal certificate attached' — the renewal certificate does not override the format requirement." },
+          { "field": "Bank Name", "present": true, "formatValid": true, "reason": "Bank name present: BankIslami." },
+          { "field": "Bank Account Number", "present": true, "formatValid": true, "reason": "Bank account number present: 0033445588." },
+          { "field": "App Signup", "present": true, "formatValid": true, "reason": "App signup confirmed." },
+          { "field": "Supply Breadth", "present": true, "formatValid": true, "reason": "2 lane(s) and 2 truck type(s) declared." }
+        ],
+        "rejectionMessage": "Submission incomplete. Please provide the following before onboarding can proceed:\n\n• Tax ID: Tax ID \"12345678\" is not a valid 7-digit number. NTN must be exactly 7 digits. Please provide the correct 7-digit NTN from the renewal certificate."
+      },
+      "qualify": {
+        "passed": false, "provisional": false,
+        "criteria": [
+          { "criterion": "Tax ID", "passed": false, "note": "Format invalid: '12345678' is 8 digits, not 7. Carrier acknowledges this — renewal certificate pending." },
+          { "criterion": "Bank Details", "passed": true, "note": "BankIslami, account 0033445588 — present and recorded." },
+          { "criterion": "App Signup", "passed": true, "note": "Carrier is registered on the app." },
+          { "criterion": "First Load", "passed": true, "note": "First load completed." },
+          { "criterion": "Supply Breadth", "passed": true, "note": "2 lane(s): A-B, C-D. 2 truck type(s): 40ft, small_van." }
+        ],
+        "summary": "Carrier did not pass compliance validation. Rejected before qualification. Note: this carrier has strong performance metrics (87% on-time, 89% fulfilment) and should be re-submitted once the correct 7-digit NTN is confirmed."
+      },
+      "score": null
+    },
+    "tokenUsage": { "extractTokens": 519, "agentTokens": 0, "totalTokens": 519 }
+  }
+}
