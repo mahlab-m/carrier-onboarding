@@ -1,7 +1,10 @@
 "use client";
 
 import { useState, Fragment } from "react";
-import type { SyntheticCarrier, Tier } from "../lib/types";
+import type { SyntheticCarrier, Tier, PipelineResult } from "../lib/types";
+import staticResultsRaw from "../data/static_results.json";
+
+const STATIC_RESULTS = staticResultsRaw as unknown as Record<string, PipelineResult>;
 
 const tierColors: Record<Tier, string> = {
   Top: "bg-emerald-100 text-emerald-700 border-emerald-200",
@@ -65,14 +68,20 @@ function MiniBar({ value, label }: { value: number | null; label: string }) {
   );
 }
 
-function overallScore(carrier: SyntheticCarrier): number | null {
+function overallScore(carrier: SyntheticCarrier): { score: number; canonical: boolean } | null {
+  // Rejected carriers never reach Scorecard 2 — no score exists
+  if (carrier.evalLabel === "Rejected") return null;
+  // Use authoritative pipeline score if available
+  const staticScore = STATIC_RESULTS[carrier.id]?.stages?.score?.totalScore;
+  if (staticScore !== undefined) return { score: staticScore, canonical: true };
+  // Estimated score (excludes pricing) for display-only carriers
   const pm = carrier.performanceMetrics;
   if (!pm.appAdoptionScore && !pm.onTimePickupRate && !pm.fulfilmentRate) return null;
   const { appAdoption, onTime, fulfilment, supplyBreadth } = computeScorecard2(carrier);
   const app = appAdoption ?? 50;
   const ot = onTime ?? 50;
   const ful = fulfilment ?? 50;
-  return Math.round((app + ot + 70 + ful + supplyBreadth) / 5); // 70 = neutral pricing for display
+  return { score: Math.round((app + ot + 70 + ful + supplyBreadth) / 5), canonical: false };
 }
 
 interface Props {
@@ -137,10 +146,12 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
           </thead>
           <tbody>
             {shown.map((c) => {
-              const score = overallScore(c);
+              const scoreResult = overallScore(c);
               const isExpanded = expandedId === c.id;
               const sc2 = computeScorecard2(c);
-              const hasMetrics = c.performanceMetrics.appAdoptionScore !== null || c.performanceMetrics.onTimePickupRate !== null;
+              // Rejected carriers never ran Scorecard 2 — no metrics to show
+              const hasMetrics = c.evalLabel !== "Rejected" &&
+                (c.performanceMetrics.appAdoptionScore !== null || c.performanceMetrics.onTimePickupRate !== null);
 
               return (
                 <Fragment key={c.id}>
@@ -163,8 +174,15 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
                     <td className="py-2.5 pr-4 text-gray-600">
                       {c.performanceMetrics.truckTypes.join(", ") || "—"}
                     </td>
-                    <td className="py-2.5 pr-4 text-right font-semibold text-gray-800">
-                      {score !== null ? score : "—"}
+                    <td className="py-2.5 pr-4 text-right">
+                      {scoreResult !== null ? (
+                        <span className="font-semibold text-gray-800">
+                          {scoreResult.score}
+                          {!scoreResult.canonical && (
+                            <span className="text-gray-400 font-normal text-xs ml-0.5">est.</span>
+                          )}
+                        </span>
+                      ) : "—"}
                     </td>
                     <td className="py-2.5 pr-4">
                       <span className={`px-2 py-0.5 text-xs font-medium rounded border ${tierColors[c.evalLabel]}`}>
@@ -218,7 +236,7 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
         </table>
       </div>
       <p className="mt-3 text-xs text-gray-400">
-        Showing {Math.min(SHOW, carriers.length)} of {carriers.length} carriers. Click a row to expand Scorecard 2 metrics. Carriers with a &ldquo;Run pipeline&rdquo; link have a submission document on record.
+        Showing {Math.min(SHOW, carriers.length)} of {carriers.length} carriers. Scores from a full pipeline run are shown as-is; scores marked <span className="italic">est.</span> exclude pricing (run the pipeline for the full score). Rejected carriers have no score — they never reached Scorecard 2.
       </p>
     </div>
   );

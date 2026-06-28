@@ -90,6 +90,7 @@ export default function Home() {
   }
 
   const selectedCarrier = carriers.find((c) => c.id === selectedId);
+  const isDemoMode = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -151,10 +152,14 @@ export default function Home() {
                     Preloaded
                   </button>
                   <button
-                    onClick={() => setUseCustom(true)}
+                    onClick={() => !isDemoMode && setUseCustom(true)}
+                    disabled={isDemoMode}
+                    title={isDemoMode ? "Custom submissions require a live API key" : undefined}
                     className={`flex-1 py-1.5 text-xs rounded border ${
                       useCustom
                         ? "bg-gray-900 text-white border-gray-900"
+                        : isDemoMode
+                        ? "bg-white text-gray-300 border-gray-100 cursor-not-allowed"
                         : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
                     }`}
                   >
@@ -195,6 +200,11 @@ export default function Home() {
                         {selectedCarrier.knownIssues.join(", ")}
                       </div>
                     ) : null}
+                  </div>
+                ) : isDemoMode ? (
+                  <div className="rounded bg-gray-50 border border-gray-100 px-3 py-4 text-xs text-gray-500 text-center">
+                    Custom submissions require a live API key.
+                    <br />This public demo runs on preloaded carriers only.
                   </div>
                 ) : (
                   <div>
