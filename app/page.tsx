@@ -9,10 +9,10 @@ import carriersData from "../data/synthetic_carriers.json";
 const carriers = carriersData as unknown as SyntheticCarrier[];
 const labelledCarriers = carriers.filter((c) => c.isLabelled && c.submission !== null);
 
-type Tab = "pipeline" | "database" | "about";
+type Tab = "about" | "pipeline" | "database";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<Tab>("pipeline");
+  const [activeTab, setActiveTab] = useState<Tab>("about");
   const [selectedId, setSelectedId] = useState<string>(labelledCarriers[0]?.id ?? "");
   const [customBlob, setCustomBlob] = useState("");
   const [useCustom, setUseCustom] = useState(false);
@@ -116,7 +116,7 @@ export default function Home() {
       {/* Tabs */}
       <div className="max-w-6xl mx-auto px-6 pt-4">
         <div className="flex border-b border-gray-200">
-          {(["pipeline", "database", "about"] as Tab[]).map((tab) => (
+          {(["about", "pipeline", "database"] as Tab[]).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -126,7 +126,7 @@ export default function Home() {
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
-              {tab === "pipeline" ? "Run Pipeline" : tab === "database" ? "Carrier Database" : "About"}
+              {tab === "pipeline" ? "Run Pipeline" : tab === "database" ? "Carrier Database" : "How it works"}
             </button>
           ))}
         </div>
@@ -324,32 +324,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* The design decision */}
-            <div>
-              <h2 className="font-semibold text-gray-800 mb-2">The design decision</h2>
-              <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                The pipeline has two layers, and the split is deliberate.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-lg bg-gray-50 border border-gray-200 p-4">
-                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Workflow layer</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">Extract → Validate → Scorecard 1. Deterministic rules. Any fail returns a specific rejection message. Compliance decisions must be auditable — an agent here would add non-determinism to a step that has to be defensible.</p>
-                </div>
-                <div className="rounded-lg bg-blue-50 border border-blue-100 p-4">
-                  <p className="text-xs font-semibold text-blue-500 uppercase tracking-wide mb-2">Agent layer</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">Scorecard 2 + improvement plans. Claude Sonnet 4.6 with tool use. Compares carrier rates against PKR lane benchmarks, assesses supply gaps, writes specific plans. No rules engine produces a rationale a human wants to read.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Eval */}
-            <div>
-              <h2 className="font-semibold text-gray-800 mb-2">Eval</h2>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Tested against 20 synthetic carrier profiles covering the full archetype space — clean submissions, Urdu transliteration, heavy abbreviations, missing fields, borderline scores, and multi-flag improvement cases. 20/20 tier match on the authored test set. Two observed imperfections noted: C014&apos;s borderline rationale skips the fact that two metrics are below SLA, and C016&apos;s blended pricing score absorbs a 15% above-benchmark lane without flagging it.
-              </p>
             </div>
 
             {/* Built by */}
