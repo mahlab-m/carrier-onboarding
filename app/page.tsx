@@ -9,7 +9,7 @@ import carriersData from "../data/synthetic_carriers.json";
 const carriers = carriersData as unknown as SyntheticCarrier[];
 const labelledCarriers = carriers.filter((c) => c.isLabelled && c.submission !== null);
 
-type Tab = "pipeline" | "database";
+type Tab = "pipeline" | "database" | "about";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>("pipeline");
@@ -116,7 +116,7 @@ export default function Home() {
       {/* Tabs */}
       <div className="max-w-6xl mx-auto px-6 pt-4">
         <div className="flex border-b border-gray-200">
-          {(["pipeline", "database"] as Tab[]).map((tab) => (
+          {(["pipeline", "database", "about"] as Tab[]).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -126,7 +126,7 @@ export default function Home() {
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
-              {tab === "pipeline" ? "Run Pipeline" : "Carrier Database"}
+              {tab === "pipeline" ? "Run Pipeline" : tab === "database" ? "Carrier Database" : "About"}
             </button>
           ))}
         </div>
@@ -289,6 +289,75 @@ export default function Home() {
                 </div>
               )}
               {!loading && result && <PipelineOutput result={result} />}
+            </div>
+          </div>
+        )}
+
+        {activeTab === "about" && (
+          <div className="max-w-2xl space-y-8">
+            {/* What this is */}
+            <div>
+              <h2 className="font-semibold text-gray-800 mb-2">What this is</h2>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                A working AI pipeline that takes a new carrier submission — a WhatsApp message from a ground team — and processes it end-to-end: extracts compliance fields, validates them, qualifies the carrier, and produces a tier decision with a written rationale and improvement plan.
+              </p>
+              <p className="text-sm text-gray-600 leading-relaxed mt-2">
+                Built from a manual onboarding framework I designed and ran at Trella, a YC-backed logistics marketplace in Pakistan. The manual process had two problems: ops reps applying rules inconsistently, and no systematic way to tier carriers by performance. This system replaces the standard path with no manual effort.
+              </p>
+            </div>
+
+            {/* How to use it */}
+            <div>
+              <h2 className="font-semibold text-gray-800 mb-3">How to use this demo</h2>
+              <div className="space-y-3">
+                {[
+                  { step: "1", label: "Run Pipeline", desc: "Select any carrier from the dropdown and click Run Pipeline. You'll see the submission blob, then each stage of the pipeline: extraction, validation, qualification gate, and the agent's performance assessment. The preloaded carriers are pre-computed — no API key required." },
+                  { step: "2", label: "Carrier Database", desc: "The database tab shows all 40 synthetic carrier profiles with their tiers and scores. Expand any row to see the underlying Scorecard 2 metrics. Carriers marked Rejected have no score — they were stopped at the compliance gate before the agent ran." },
+                  { step: "3", label: "Try the hard cases", desc: "C016 and C017 are Urdu transliteration submissions. C018 is almost entirely abbreviations. C013 and C014 are borderline scores — one point apart on the tier threshold. C015 has all metrics poor and generates a multi-flag improvement plan." },
+                ].map(({ step, label, desc }) => (
+                  <div key={step} className="flex gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-900 text-white text-xs font-medium flex items-center justify-center mt-0.5">{step}</span>
+                    <div>
+                      <p className="text-sm font-medium text-gray-800">{label}</p>
+                      <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* The design decision */}
+            <div>
+              <h2 className="font-semibold text-gray-800 mb-2">The design decision</h2>
+              <p className="text-sm text-gray-600 leading-relaxed mb-3">
+                The pipeline has two layers, and the split is deliberate.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-lg bg-gray-50 border border-gray-200 p-4">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Workflow layer</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">Extract → Validate → Scorecard 1. Deterministic rules. Any fail returns a specific rejection message. Compliance decisions must be auditable — an agent here would add non-determinism to a step that has to be defensible.</p>
+                </div>
+                <div className="rounded-lg bg-blue-50 border border-blue-100 p-4">
+                  <p className="text-xs font-semibold text-blue-500 uppercase tracking-wide mb-2">Agent layer</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">Scorecard 2 + improvement plans. Claude Sonnet 4.6 with tool use. Compares carrier rates against PKR lane benchmarks, assesses supply gaps, writes specific plans. No rules engine produces a rationale a human wants to read.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Eval */}
+            <div>
+              <h2 className="font-semibold text-gray-800 mb-2">Eval</h2>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Tested against 20 synthetic carrier profiles covering the full archetype space — clean submissions, Urdu transliteration, heavy abbreviations, missing fields, borderline scores, and multi-flag improvement cases. 20/20 tier match on the authored test set. Two observed imperfections noted: C014&apos;s borderline rationale skips the fact that two metrics are below SLA, and C016&apos;s blended pricing score absorbs a 15% above-benchmark lane without flagging it.
+              </p>
+            </div>
+
+            {/* Built by */}
+            <div className="border-t border-gray-100 pt-6">
+              <p className="text-xs text-gray-400">
+                Built by Mahlab Maniar · Stack: Next.js, TypeScript, Claude Sonnet 4.6, Vercel ·{" "}
+                <a href="https://github.com/mahlab-m/carrier-onboarding" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600">GitHub</a>
+              </p>
             </div>
           </div>
         )}
