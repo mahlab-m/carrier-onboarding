@@ -14,8 +14,6 @@ type Tab = "about" | "pipeline" | "database";
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>("about");
   const [selectedId, setSelectedId] = useState<string>(labelledCarriers[0]?.id ?? "");
-  const [customBlob, setCustomBlob] = useState("");
-  const [useCustom, setUseCustom] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadingStage, setLoadingStage] = useState(0);
   const [result, setResult] = useState<PipelineResult | null>(null);
@@ -41,16 +39,7 @@ export default function Home() {
     });
 
     try {
-      const body = useCustom
-        ? {
-            customSubmission: {
-              carrierName: "Custom Submission",
-              submittedBy: "-",
-              contactNumber: "-",
-              documentBlob: customBlob,
-            },
-          }
-        : { carrierId: selectedId };
+      const body = { carrierId: selectedId };
 
       const res = await fetch("/api/pipeline", {
         method: "POST",
@@ -66,13 +55,9 @@ export default function Home() {
 
       const data: PipelineResult = await res.json();
       // Attach the raw blob for display
-      if (!useCustom) {
-        const carrier = carriers.find((c) => c.id === selectedId);
-        if (carrier?.submission) {
-          (data as unknown as Record<string, unknown>).rawBlob = carrier.submission.documentBlob;
-        }
-      } else {
-        (data as unknown as Record<string, unknown>).rawBlob = customBlob;
+      const carrier = carriers.find((c) => c.id === selectedId);
+      if (carrier?.submission) {
+        (data as unknown as Record<string, unknown>).rawBlob = carrier.submission.documentBlob;
       }
       setResult(data);
     } catch (err) {
@@ -84,13 +69,11 @@ export default function Home() {
 
   function handleSelectFromDB(id: string) {
     setSelectedId(id);
-    setUseCustom(false);
     setActiveTab("pipeline");
     setResult(null);
   }
 
   const selectedCarrier = carriers.find((c) => c.id === selectedId);
-  const isDemoMode = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -139,90 +122,41 @@ export default function Home() {
               <div className="bg-white rounded-lg border border-gray-200 p-4">
                 <h2 className="font-semibold text-gray-800 mb-3 text-sm">Submission</h2>
 
-                <div className="flex gap-2 mb-4">
-                  <button
-                    onClick={() => setUseCustom(false)}
-                    className={`flex-1 py-1.5 text-xs rounded border ${
-                      !useCustom
-                        ? "bg-gray-900 text-white border-gray-900"
-                        : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
-                    }`}
-                  >
-                    Preloaded
-                  </button>
-                  <button
-                    onClick={() => !isDemoMode && setUseCustom(true)}
-                    disabled={isDemoMode}
-                    title={isDemoMode ? "Custom submissions require a live API key" : undefined}
-                    className={`flex-1 py-1.5 text-xs rounded border ${
-                      useCustom
-                        ? "bg-gray-900 text-white border-gray-900"
-                        : isDemoMode
-                        ? "bg-white text-gray-300 border-gray-100 cursor-not-allowed"
-                        : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
-                    }`}
-                  >
-                    Paste your own
-                  </button>
-                </div>
+                <label className="text-xs text-gray-500 mb-1 block">Select carrier</label>
+                <select
+                  value={selectedId}
+                  onChange={(e) => {
+                    setSelectedId(e.target.value);
+                    setResult(null);
+                  }}
+                  className="w-full text-sm border border-gray-200 rounded px-2.5 py-1.5 bg-white text-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-400"
+                >
+                  {labelledCarriers.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.id} - {c.name}
+                    </option>
+                  ))}
+                </select>
 
-                {!useCustom ? (
-                  <div>
-                    <label className="text-xs text-gray-500 mb-1 block">Select carrier</label>
-                    <select
-                      value={selectedId}
-                      onChange={(e) => {
-                        setSelectedId(e.target.value);
-                        setResult(null);
-                      }}
-                      className="w-full text-sm border border-gray-200 rounded px-2.5 py-1.5 bg-white text-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-400"
-                    >
-                      {labelledCarriers.map((c) => (
-                        <option key={c.id} value={c.id}>
-                          {c.id} - {c.name}
-                        </option>
-                      ))}
-                    </select>
-
-                    {selectedCarrier?.submission && (
-                      <div className="mt-3">
-                        <p className="text-xs text-gray-500 mb-1">Document blob</p>
-                        <p className="text-xs text-gray-600 italic bg-gray-50 rounded p-2.5 border border-gray-100 leading-relaxed">
-                          &ldquo;{selectedCarrier.submission.documentBlob}&rdquo;
-                        </p>
-                      </div>
-                    )}
-
-                    {selectedCarrier?.knownIssues.length ? (
-                      <div className="mt-3 text-xs text-gray-400">
-                        <span className="font-medium">Known issues:</span>{" "}
-                        {selectedCarrier.knownIssues.join(", ")}
-                      </div>
-                    ) : null}
-                  </div>
-                ) : isDemoMode ? (
-                  <div className="rounded bg-gray-50 border border-gray-100 px-3 py-4 text-xs text-gray-500 text-center">
-                    Custom submissions require a live API key.
-                    <br />This public demo runs on preloaded carriers only.
-                  </div>
-                ) : (
-                  <div>
-                    <label className="text-xs text-gray-500 mb-1 block">
-                      Paste a WhatsApp-style submission
-                    </label>
-                    <textarea
-                      value={customBlob}
-                      onChange={(e) => setCustomBlob(e.target.value)}
-                      placeholder="e.g. Hi, we are ABC Transport. Tax 1234567, bank MCB 0012345678. 2x 40ft trucks on City A to B lane. App registered. First load done."
-                      rows={6}
-                      className="w-full text-sm border border-gray-200 rounded px-2.5 py-1.5 bg-white text-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-400 resize-none"
-                    />
+                {selectedCarrier?.submission && (
+                  <div className="mt-3">
+                    <p className="text-xs text-gray-500 mb-1">Document blob</p>
+                    <p className="text-xs text-gray-600 italic bg-gray-50 rounded p-2.5 border border-gray-100 leading-relaxed">
+                      &ldquo;{selectedCarrier.submission.documentBlob}&rdquo;
+                    </p>
                   </div>
                 )}
 
+                {selectedCarrier?.knownIssues.length ? (
+                  <div className="mt-3 text-xs text-gray-400">
+                    <span className="font-medium">Known issues:</span>{" "}
+                    {selectedCarrier.knownIssues.join(", ")}
+                  </div>
+                ) : null}
+
                 <button
                   onClick={runPipeline}
-                  disabled={loading || (useCustom && !customBlob.trim())}
+                  disabled={loading}
                   className="mt-4 w-full py-2 text-sm font-medium rounded bg-gray-900 text-white hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {loading ? "Running pipeline…" : "Run Pipeline"}
@@ -309,7 +243,7 @@ export default function Home() {
                 {[
                   { step: "1", label: "Run Pipeline", desc: "Select any carrier from the dropdown and click Run Pipeline. You'll see the submission blob, then each stage of the pipeline: extraction, validation, qualification gate, and the agent's performance assessment. The preloaded carriers are pre-computed - no API key required (demo only)." },
                   { step: "2", label: "Carrier Database", desc: "The database tab shows all 40 synthetic carrier profiles with their tiers and scores. Expand any row to see the underlying Scorecard 2 metrics. Carriers marked Rejected have no score - they were stopped at the compliance gate before the agent ran." },
-                  { step: "3", label: "Try the hard cases", desc: "C016 and C017 are Urdu transliteration submissions. C018 is almost entirely abbreviations. C013 and C014 are borderline scores - one point apart on the tier threshold. C015 has all metrics poor and generates a multi-flag improvement plan." },
+                  { step: "3", label: "Try the hard cases", desc: "C016 and C017 are Urdu translation submissions. C018 is almost entirely abbreviations. C013 and C014 are borderline scores - one point apart on the tier threshold. C015 has all metrics poor and generates a multi-flag improvement plan." },
                 ].map(({ step, label, desc }) => (
                   <div key={step} className="flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-900 text-white text-xs font-medium flex items-center justify-center mt-0.5">{step}</span>
