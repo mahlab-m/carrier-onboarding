@@ -29,7 +29,7 @@ function tierLabel(tier: Tier): string {
 
 function formatLane(lane: string): string {
   const parts = lane.split("-");
-  return parts.length === 2 ? `Lane ${parts[0]}–${parts[1]}` : lane;
+  return parts.length === 2 ? `Lane ${parts[0]}-${parts[1]}` : lane;
 }
 
 function SectionHeader({
@@ -86,7 +86,7 @@ export default function PipelineOutput({ result }: { result: PipelineResult }) {
       <div className="rounded-lg border border-gray-200 bg-white p-4">
         <SectionHeader label="1. Document Received" badge="Raw input" />
         <p className="text-sm text-gray-600 italic leading-relaxed bg-gray-50 rounded p-3 border border-gray-100">
-          &ldquo;{result.stages.extract ? (result as unknown as { rawBlob?: string }).rawBlob ?? "—" : "—"}&rdquo;
+          &ldquo;{result.stages.extract ? (result as unknown as { rawBlob?: string }).rawBlob ?? "-" : "-"}&rdquo;
         </p>
       </div>
 
@@ -95,14 +95,14 @@ export default function PipelineOutput({ result }: { result: PipelineResult }) {
         <SectionHeader label="2. Extract" badge="WORKFLOW" />
         <div className="grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm">
           {[
-            ["Tax ID", stages.extract.taxId ?? "—"],
-            ["Bank Name", stages.extract.bankName ?? "—"],
-            ["Bank Account", stages.extract.bankAccount ?? "—"],
+            ["Tax ID", stages.extract.taxId ?? "-"],
+            ["Bank Name", stages.extract.bankName ?? "-"],
+            ["Bank Account", stages.extract.bankAccount ?? "-"],
             ["App Signup", stages.extract.appSignup === true ? "Yes" : stages.extract.appSignup === false ? "No" : "Not mentioned"],
             ["First Load", stages.extract.firstLoadCompleted === true ? "Completed" : stages.extract.firstLoadCompleted === false ? "Not yet" : "Not mentioned"],
-            ["Lanes", stages.extract.lanesServed.map(formatLane).join(", ") || "—"],
-            ["Truck Types", stages.extract.truckTypes.join(", ") || "—"],
-            ["Total Trucks", stages.extract.totalTrucks?.toString() ?? "—"],
+            ["Lanes", stages.extract.lanesServed.map(formatLane).join(", ") || "-"],
+            ["Truck Types", stages.extract.truckTypes.join(", ") || "-"],
+            ["Total Trucks", stages.extract.totalTrucks?.toString() ?? "-"],
           ].map(([label, value]) => (
             <div key={label} className="flex justify-between border-b border-gray-50 pb-1">
               <span className="text-gray-500">{label}</span>
@@ -138,10 +138,10 @@ export default function PipelineOutput({ result }: { result: PipelineResult }) {
         )}
       </div>
 
-      {/* Stage 4: Qualification Gate — Scorecard 1 */}
+      {/* Stage 4: Qualification Gate - Scorecard 1 */}
       <div className="rounded-lg border border-gray-200 bg-white p-4">
         <SectionHeader
-          label="4. Qualification Gate — Scorecard 1"
+          label="4. Qualification Gate - Scorecard 1"
           badge="WORKFLOW"
           passed={stages.qualify.passed}
         />
@@ -160,17 +160,17 @@ export default function PipelineOutput({ result }: { result: PipelineResult }) {
         </div>
         {stages.qualify.provisional && (
           <div className="mt-3 p-2.5 rounded bg-purple-50 border border-purple-200 text-sm text-purple-700">
-            Provisional status — first load not yet completed. Proceeding to performance assessment.
+            Provisional status - first load not yet completed. Proceeding to performance assessment.
           </div>
         )}
         <p className="mt-2 text-xs text-gray-500 italic">{stages.qualify.summary}</p>
       </div>
 
-      {/* Stage 5: Performance — Scorecard 2 (agent) */}
+      {/* Stage 5: Performance - Scorecard 2 (agent) */}
       {stages.score && (
         <div className="rounded-lg border border-gray-200 bg-white p-4">
           <SectionHeader
-            label="5. Performance Assessment — Scorecard 2"
+            label="5. Performance Assessment - Scorecard 2"
             badge="AGENT"
           />
           <div className="space-y-2 mb-4">

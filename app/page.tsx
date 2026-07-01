@@ -45,8 +45,8 @@ export default function Home() {
         ? {
             customSubmission: {
               carrierName: "Custom Submission",
-              submittedBy: "—",
-              contactNumber: "—",
+              submittedBy: "-",
+              contactNumber: "-",
               documentBlob: customBlob,
             },
           }
@@ -107,7 +107,6 @@ export default function Home() {
             </p>
           </div>
           <div className="text-xs text-gray-400 text-right">
-            <div>Model: claude-sonnet-4-6</div>
             <div>{carriers.length} carriers in database</div>
           </div>
         </div>
@@ -180,7 +179,7 @@ export default function Home() {
                     >
                       {labelledCarriers.map((c) => (
                         <option key={c.id} value={c.id}>
-                          {c.id} — {c.name}
+                          {c.id} - {c.name}
                         </option>
                       ))}
                     </select>
@@ -299,10 +298,7 @@ export default function Home() {
             <div>
               <h2 className="font-semibold text-gray-800 mb-2">What this is</h2>
               <p className="text-sm text-gray-600 leading-relaxed">
-                A working AI pipeline that takes a new carrier submission — a WhatsApp message from a ground team — and processes it end-to-end: extracts compliance fields, validates them, qualifies the carrier, and produces a tier decision with a written rationale and improvement plan.
-              </p>
-              <p className="text-sm text-gray-600 leading-relaxed mt-2">
-                Built from a manual onboarding framework I designed and ran at Trella, a YC-backed logistics marketplace in Pakistan. The manual process had two problems: ops reps applying rules inconsistently, and no systematic way to tier carriers by performance. This system replaces the standard path with no manual effort.
+                Built from the manual carrier onboarding framework I designed and ran at Trella, a YC-backed logistics marketplace in Pakistan. The manual process had two problems: ops reps applying qualification criteria inconsistently, and no systematic way to tier carriers by performance. This system automates the standard path - taking a raw WhatsApp submission from a ground team and producing a compliance decision, performance score, and improvement plan with no manual effort.
               </p>
             </div>
 
@@ -311,9 +307,9 @@ export default function Home() {
               <h2 className="font-semibold text-gray-800 mb-3">How to use this demo</h2>
               <div className="space-y-3">
                 {[
-                  { step: "1", label: "Run Pipeline", desc: "Select any carrier from the dropdown and click Run Pipeline. You'll see the submission blob, then each stage of the pipeline: extraction, validation, qualification gate, and the agent's performance assessment. The preloaded carriers are pre-computed — no API key required." },
-                  { step: "2", label: "Carrier Database", desc: "The database tab shows all 40 synthetic carrier profiles with their tiers and scores. Expand any row to see the underlying Scorecard 2 metrics. Carriers marked Rejected have no score — they were stopped at the compliance gate before the agent ran." },
-                  { step: "3", label: "Try the hard cases", desc: "C016 and C017 are Urdu transliteration submissions. C018 is almost entirely abbreviations. C013 and C014 are borderline scores — one point apart on the tier threshold. C015 has all metrics poor and generates a multi-flag improvement plan." },
+                  { step: "1", label: "Run Pipeline", desc: "Select any carrier from the dropdown and click Run Pipeline. You'll see the submission blob, then each stage of the pipeline: extraction, validation, qualification gate, and the agent's performance assessment. The preloaded carriers are pre-computed - no API key required (demo only)." },
+                  { step: "2", label: "Carrier Database", desc: "The database tab shows all 40 synthetic carrier profiles with their tiers and scores. Expand any row to see the underlying Scorecard 2 metrics. Carriers marked Rejected have no score - they were stopped at the compliance gate before the agent ran." },
+                  { step: "3", label: "Try the hard cases", desc: "C016 and C017 are Urdu transliteration submissions. C018 is almost entirely abbreviations. C013 and C014 are borderline scores - one point apart on the tier threshold. C015 has all metrics poor and generates a multi-flag improvement plan." },
                 ].map(({ step, label, desc }) => (
                   <div key={step} className="flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-900 text-white text-xs font-medium flex items-center justify-center mt-0.5">{step}</span>
@@ -342,7 +338,7 @@ export default function Home() {
               <div>
                 <h2 className="font-semibold text-gray-800">Carrier Database</h2>
                 <p className="text-xs text-gray-500 mt-0.5">
-                  {carriers.length} carriers — what the operational deployment looks like at scale
+                  {carriers.length} carriers - what the operational deployment looks like at scale
                 </p>
               </div>
               <div className="flex gap-2 text-xs">

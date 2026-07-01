@@ -15,11 +15,11 @@ const tierColors: Record<Tier, string> = {
 };
 
 const TIER_KEY: { tier: Tier; label: string; description: string }[] = [
-  { tier: "Top", label: "Tier 1", description: "Top performers — priority load allocation" },
-  { tier: "Mid", label: "Tier 2", description: "Solid mid-range — steady allocation" },
-  { tier: "Improvement", label: "Tier 3", description: "Needs improvement — action plan required" },
-  { tier: "Provisional", label: "Provisional", description: "New carriers — under 90-day monitoring" },
-  { tier: "Rejected", label: "Rejected", description: "Failed compliance check — cannot onboard" },
+  { tier: "Top", label: "Tier 1", description: "Top performers - priority load allocation" },
+  { tier: "Mid", label: "Tier 2", description: "Solid mid-range - steady allocation" },
+  { tier: "Improvement", label: "Tier 3", description: "Needs improvement - action plan required" },
+  { tier: "Provisional", label: "Provisional", description: "New carriers - under 90-day monitoring" },
+  { tier: "Rejected", label: "Rejected", description: "Failed compliance check - cannot onboard" },
 ];
 
 function tierLabel(tier: Tier): string {
@@ -29,7 +29,7 @@ function tierLabel(tier: Tier): string {
 
 function formatLane(lane: string): string {
   const parts = lane.split("-");
-  return parts.length === 2 ? `Lane ${parts[0]}–${parts[1]}` : lane;
+  return parts.length === 2 ? `Lane ${parts[0]}-${parts[1]}` : lane;
 }
 
 function computeScorecard2(carrier: SyntheticCarrier): {
@@ -63,7 +63,7 @@ function MiniBar({ value, label }: { value: number | null; label: string }) {
       <div className="flex-1 bg-gray-100 rounded-full h-1.5">
         <div className={`h-1.5 rounded-full ${color}`} style={{ width: `${pct}%` }} />
       </div>
-      <span className="w-10 text-right font-medium text-gray-700">{value !== null ? `${value}` : "—"}</span>
+      <span className="w-10 text-right font-medium text-gray-700">{value !== null ? `${value}` : "-"}</span>
     </div>
   );
 }
@@ -110,11 +110,11 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
           <tbody>
             {TIER_KEY.map(({ tier, label, description }, i) => {
               const allocation: Record<string, string> = {
-                Top: "Priority — first offer on all loads",
-                Mid: "Steady — regular volume, monitored",
-                Improvement: "Restricted — action plan required before scale-up",
-                Provisional: "Limited — monitored for 90 days post-first-load",
-                Rejected: "None — cannot be onboarded until compliance is resolved",
+                Top: "Priority - first offer on all loads",
+                Mid: "Steady - regular volume, monitored",
+                Improvement: "Restricted - action plan required before scale-up",
+                Provisional: "Limited - monitored for 90 days post-first-load",
+                Rejected: "None - cannot be onboarded until compliance is resolved",
               };
               return (
                 <tr key={tier} className={i < TIER_KEY.length - 1 ? "border-b border-gray-100" : ""}>
@@ -169,10 +169,10 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
                     <td className="py-2.5 pr-4 text-gray-400 font-mono text-xs">{c.id}</td>
                     <td className="py-2.5 pr-4 font-medium text-gray-800">{c.name}</td>
                     <td className="py-2.5 pr-4 text-gray-600">
-                      {c.performanceMetrics.lanesServed.map(formatLane).join(", ") || "—"}
+                      {c.performanceMetrics.lanesServed.map(formatLane).join(", ") || "-"}
                     </td>
                     <td className="py-2.5 pr-4 text-gray-600">
-                      {c.performanceMetrics.truckTypes.join(", ") || "—"}
+                      {c.performanceMetrics.truckTypes.join(", ") || "-"}
                     </td>
                     <td className="py-2.5 pr-4 text-right">
                       {scoreResult !== null ? (
@@ -182,7 +182,7 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
                             <span className="text-gray-400 font-normal text-xs ml-0.5">est.</span>
                           )}
                         </span>
-                      ) : "—"}
+                      ) : "-"}
                     </td>
                     <td className="py-2.5 pr-4">
                       <span className={`px-2 py-0.5 text-xs font-medium rounded border ${tierColors[c.evalLabel]}`}>
@@ -198,7 +198,7 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
                           Run pipeline →
                         </button>
                       ) : (
-                        <span className="text-xs text-gray-300">—</span>
+                        <span className="text-xs text-gray-300">-</span>
                       )}
                     </td>
                   </tr>
@@ -207,7 +207,7 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
                     <tr className="border-b border-gray-100 bg-gray-50">
                       <td colSpan={8} className="px-8 py-3">
                         <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
-                          Scorecard 2 — Performance Metrics
+                          Scorecard 2 - Performance Metrics
                         </p>
                         <div className="space-y-1.5 max-w-sm">
                           <MiniBar value={sc2.appAdoption} label="App Adoption" />
@@ -236,7 +236,7 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
         </table>
       </div>
       <p className="mt-3 text-xs text-gray-400">
-        Showing {Math.min(SHOW, carriers.length)} of {carriers.length} carriers. Scores from a full pipeline run are shown as-is; scores marked <span className="italic">est.</span> exclude pricing (run the pipeline for the full score). Rejected carriers have no score — they never reached Scorecard 2.
+        Showing {Math.min(SHOW, carriers.length)} of {carriers.length} carriers. Scores from a full pipeline run are shown as-is; scores marked <span className="italic">est.</span> exclude pricing (run the pipeline for the full score). Rejected carriers have no score - they never reached Scorecard 2.
       </p>
     </div>
   );
