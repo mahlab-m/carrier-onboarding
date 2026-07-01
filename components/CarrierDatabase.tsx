@@ -101,10 +101,10 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
       <div className="mb-6 border border-gray-200 rounded-lg overflow-hidden">
         <table className="w-full text-xs">
           <thead>
-            <tr className="bg-gray-50 border-b border-gray-200">
-              <th className="text-left px-4 py-2 font-medium text-gray-500 uppercase tracking-wide w-28">Tier</th>
-              <th className="text-left px-4 py-2 font-medium text-gray-500 uppercase tracking-wide">Meaning</th>
-              <th className="text-left px-4 py-2 font-medium text-gray-500 uppercase tracking-wide">Allocation</th>
+            <tr className="bg-gray-900">
+              <th className="text-left px-4 py-2.5 font-medium text-white uppercase tracking-wide w-28 text-xs">Tier</th>
+              <th className="text-left px-4 py-2.5 font-medium text-white uppercase tracking-wide text-xs">Meaning</th>
+              <th className="text-left px-4 py-2.5 font-medium text-white uppercase tracking-wide text-xs">Allocation</th>
             </tr>
           </thead>
           <tbody>
@@ -133,15 +133,15 @@ export default function CarrierDatabase({ carriers, onSelectCarrier }: Props) {
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="text-left text-xs font-medium text-gray-500 uppercase tracking-wide border-b border-gray-200">
-              <th className="pb-2 pr-3 w-4"></th>
-              <th className="pb-2 pr-4">ID</th>
-              <th className="pb-2 pr-4">Carrier</th>
-              <th className="pb-2 pr-4">Lanes</th>
-              <th className="pb-2 pr-4">Trucks</th>
-              <th className="pb-2 pr-4 text-right">Score</th>
-              <th className="pb-2 pr-4">Tier</th>
-              <th className="pb-2">Action</th>
+            <tr className="bg-gray-900 text-left text-xs font-medium text-white uppercase tracking-wide">
+              <th className="py-2.5 pr-3 pl-3 w-4"></th>
+              <th className="py-2.5 pr-4">ID</th>
+              <th className="py-2.5 pr-4">Carrier</th>
+              <th className="py-2.5 pr-4">Lanes</th>
+              <th className="py-2.5 pr-4">Trucks</th>
+              <th className="py-2.5 pr-4 text-right">Score</th>
+              <th className="py-2.5 pr-4">Tier</th>
+              <th className="py-2.5">Action</th>
             </tr>
           </thead>
           <tbody>
